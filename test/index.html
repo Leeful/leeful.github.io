@@ -23,7 +23,7 @@ div:focus{outline:0;}
 <body>
 <pre id="console"></pre>
 <script type="text/javascript">
-var BIN = 'PS_Phwoar_Installer.bin'; var BIN2 = 'FTP.bin'; var BIN3 = 'DUMPER.bin'; var BIN4 = 'CUSTOM.bin'
+var BIN = 'PS_Phwoar_Installer.bin'; var BIN2 = 'PS_Phwoar_Installer.bin'; var BIN3 = 'DUMPER.bin'; var BIN4 = 'CUSTOM.bin'
 window.print = function (x) {window.console.innerText += x + "\n";};
 window.print_html = function (string) {window.console.innerHTML += string + "\n";};
 window.showmenu = function () {window.loader.style.display="none"; window.menu.style.display="block";};
@@ -43,14 +43,13 @@ window.onload = setTimeout(exploit, 250);
 <div id="title">USB Installer Test</div>
 <div id=loader style="display:block;"><div class=ib2>L</div><div id=loaderO></div><div class=ib2>ADING</div></div>
 <div id="menu" style="display:none;">
-<div class="info2" tabindex="1" onclick="LoadBinLoader()">BIN LOADER</div>
-<div class="info2" tabindex="2" onclick="LoadFTP()">FTP SERVER</div>
-<div class="info2" tabindex="3" onclick="LoadDumper()">GAME DUMPER</div>
-<div class="info2" tabindex="4" onclick="LoadCustom()">CUSTOM BIN</div>
+
+<div class="info2" tabindex="2" onclick="LoadFTP()">Install PS-Phwoar!</div>
+
 </div>
-<div id="allset1" class="info" style="display:none;">HEN LOADED</div>
+<div id="allset1" class="info" style="display:none;">Installing PS-Phwoar! ...</div>
 <div id="allset2" class="info" style="display:none;">WAITING FOR BIN PAYLOAD ON PORT 9020...</div>
-<div id="allset3" class="info" style="display:none;">FTP SERVER LOADED</div>
+<div id="allset3" class="info" style="display:none;">Installing PS-Phwoar! ...</div>
 <div id="allset4" class="info" style="display:none;">GAME DUMPER LOADED</div>
 <div id="allset5" class="info" style="display:none;">CUSTOM BIN LOADED</div>
 <div id="fail" class="info" style="display:none;">ERROR!!</div>
