@@ -1,0 +1,198 @@
+body{
+	font-family:'メイリオ',Meiryo,Arial,sans-serif;
+	background-color:#DDDDDD;
+	padding-left:10px;
+	padding-right:10px;
+	margin:auto;
+	-webkit-text-size-adjust: 100%;
+}
+
+header{
+	text-align:center;
+}
+
+footer{
+	text-align:center;
+	margin-top: 10em;
+	font-size:0.8em;
+}
+
+.input_area{
+	text-align:center;
+	margin-top:2em;
+	margin-bottom:1.5em;
+}
+
+#input_id{
+	background-color:#EEEEEE;
+	text-align:center;
+	width:25.5em;
+	height:2.5em;
+	font-size:1em;
+	border: 1px solid dodgerblue;
+}
+
+.config_area, select{
+	font-size:0.9em;
+}
+
+#manual{
+	color:green;
+}
+
+#output_area{
+	color:#2E2E2E;
+	max-width:650px;
+	font-size:1em;
+}
+
+#output_area ul{
+	padding-left: 0px;
+	list-style-type: none;
+}
+
+#output2, #output3, #output4, #output5, #output6, #output7, #output8{
+	margin-top: 1em;
+}
+
+.item_name{
+	color:royalblue;
+}
+
+.notice{
+	color:brown;
+}
+
+.notfound{
+	color:brown;
+}
+
+.dialog{
+	font-size:0.8em;
+	display:none;
+	max-width: 530px;
+}
+
+#output2_Description_dialog{
+	max-width: 800px;
+}
+
+#output2_Description_dialog img{
+	max-width: 780px;
+}
+
+#output4_Background_Image_dialog{
+	max-width: 800px;
+}
+
+#output4_Background_Image_dialog img{
+	max-width: 780px;
+}
+
+#output7_Rings_dialog{
+	max-width: 900px;
+}
+
+#output7_Tracks_info_dialog{
+	max-width: 900px;
+}
+
+#output8_Screenshots_dialog{
+	max-width: 780px;
+}
+
+#output8_Screenshots_dialog td{
+	border:0px;
+}
+
+#output8_High_Resolution_Covers_1_dialog, #output8_High_Resolution_Covers_2_dialog, 
+#output8_High_Resolution_Covers_3_dialog, #output8_High_Resolution_Covers_4_dialog, 
+#output8_High_Resolution_Covers_5_dialog, #output8_High_Resolution_Covers_6_dialog, 
+#output8_High_Resolution_Covers_7_dialog, #output8_High_Resolution_Covers_8_dialog{
+	max-width: 780px;
+}
+
+.dialog img, .dialog video, .dialog .iframe_y{
+	text-align:center;
+	margin-bottom: 0.3em;
+	max-width: 480px;
+}
+
+iframe{
+	max-width: 480px;
+}
+
+.pic{
+	text-align:center;
+	margin-bottom:0.2em;
+}
+
+
+.arrow_right {
+	color: green;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 0 10px;
+	margin-right: 15px;
+	border-top: 2px solid;
+	border-right: 2px solid;
+	transform: rotate(45deg);
+}
+
+.arrow_left {
+	color: green;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 0 10px;
+	border-left: 2px solid;
+	border-bottom: 2px solid;
+	transform: rotate(45deg);
+}
+
+.arrow_top {
+	color: green;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 0 10px;
+	border-top: 2px solid;
+	border-left: 2px solid;
+	transform: rotate(45deg);
+}
+
+.arrow_bottom {
+	color: green;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 0 10px;
+	border-bottom: 2px solid;
+	border-right: 2px solid;
+	transform: rotate(45deg);
+}
+
+.tracks, .rings, td, th{
+	border:1px solid #333;
+}
+
+#output7_Tracks_info_dialog td, #output7_Tracks_info_dialog th{
+	font-size:0.8em;
+}
+
+.nohover{
+	display:none;
+}
+
+#readme{
+	margin-left: 1em;
+	font-size:0.8em;
+}
+#readme .section{
+	margin-bottom: 3em;
+}
+#readme ul{
+	margin-top: 0em;
+	margin-bottom: 0em;
+}

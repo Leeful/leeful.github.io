@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Readme - PlayStation Title Info Checker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="readme">
+<div class="section">
+<h4>### PlayStation Title Info Checker v1.3.2 by kood (<a href="https://twitter.com/kood_infothief" target="_blank">@kood_infothief</a>) ###</h4>
+<a href="http://kood.info/pstic/">http://kood.info/pstic/</a><br>
+[PS1/PS2/PS3/PS4/PSP/PSVITA] のコンテンツの [タイトルID/コンテンツID/PSストアの製品ページのURL] から知る事の出来る情報を表示します。<br>
+※XXXXYYYYYの形のタイトルIDだけでなく、ハイフンがあるタイトルID(XXXX-YYYYY)や末尾に_00があるタイトルIDも認識します。<br>
+※コンテンツIDを入力するとそこからタイトルIDが、URLを入力するとそこからコンテンツIDとタイトルIDが抜き出されそれらを使用する処理が行われます。<br>
+※更新履歴は<a href="changelog.html" target="_blank">changelog.html</a>にまとめています。(最新は v1.3.2 - 2020/06/04)
+</div>
+
+<div class="section">
+<h4>### チェック (※各チェックで取得された情報は後に続くチェックで使用される事があります) ###</h4>
+<li>Media Check (タイトルIDで)</li>
+<li>Region/Rights Check (物理メディアのタイトルIDで)</li>
+<li>Type Check (物理メディアのタイトルIDで)</li>
+<li>Region/Rights Check (PSVitaのタイトルID(PCSx)で)</li>
+<li>Region Check (PSMのタイトルIDで)</li>
+<li>Region Check (PS3/PSPのDL版のタイトルID(NPxx)で)</li>
+<li>Rights/Type Check (PS3/PSPのDL版のタイトルID(NPxx)で)</li>
+<li>Region Check (PS4のコンテンツIDで)</li>
+<li>OfficialPage/GameFAQs Check (PS4/PSVitaの物理メディアのタイトルIDで)</li>
+<li>OfficialPage Check (PS1/PS2のタイトルIDで)</li>
+<li>OfficialPage Check (PS3/PSPのコンテンツID/物理メディアのタイトルIDで)</li>
+<li>OfficialPage Check (PSVitaのコンテンツIDで)</li>
+<li>Tmdb Check (PS1/PS2のタイトルID(SLUS)で、PS3のタイトルIDで)</li>
+<li>Tmdb Check (PS4のタイトルIDで)</li>
+<li>Update Check (PS3のタイトルIDで)</li>
+<li>Update Check (PS4のタイトルIDで)</li>
+<li>Update Check (PSPのタイトルIDで)</li>
+<li>Update Check (PSVitaのタイトルIDで)</li>
+<li>Tid Cid Check (PS3/PS1アーカイブス/PSP/PSVitaのタイトルIDで)</li>
+<li>Chihiro Check (PS4のタイトルIDで)</li>
+<li>Chihiro Check (コンテンツIDで(PS Video含む))</li>
+<li>Tumbler Search (Chihiro Checkに失敗した場合)</li>
+<li>Redump Check (PS1/PS2のタイトルIDで、PS3の物理メディアのタイトルIDで)</li>
+<li>PSXDatacenter Check (PS1/PS2のタイトルIDで)</li>
+</div>
+
+<div class="section">
+<h4>### URLのパラメータ ###</h4>
+以下のパラメータを使用可能です。複数のパラメータを使用する場合は&で繋げてください。<br>
+※「PlayStation Title Info Checker」部分をダブルクリックすると、その時の状態のパラメータを付与したURLがコンソールに出力&クリップボードにコピーされます。
+<ul>
+<li>id : [タイトルID/コンテンツID/PSストアの製品ページのURL]の何れか</li>
+<li>tmdb : nでTmdb Checkを無効に(チェックを解除)</li>
+<li>update: nでUpdate Checkを無効に(チェックを解除)</li>
+<li>chihiro : nでChihiro Checkを無効に(チェックを解除)</li>
+<li>chihiro : セレクトボックスの値を指定(パラメータによる指定無しでdefault)</li>
+<li>official : nでOfficial Checkを無効に(チェック解除)、exでセレクトボックスを"+ PS3/PSP/PSVita"に</li>
+<li>redump : nでRedump Checkを無効に(チェック解除)</li>
+<li>psxdc : yでPSXDatacenter Checkを有効に(チェック)</li>
+<li>manual : [psp/ps3/vita/ps4]の何れかを指定でTmdbとUpdateのURLの導出だけを行うManual Modeに</li>
+</ul>
+例)<br>
+<ul>
+<li>/?id=CUSA06027&chihiro=us/en</li>
+<li>/?id=NPJB00015&update=n&chihiro=n</li>
+<li>/?id=JP0005-BLJM61239_00-ODINSPHERELEPA00&chihiro=n</li>
+<li>/?id=https://store.playstation.com/ja-jp/product/JP0101-PCSG01248_00-PROBBSPIRITS2019</li>
+<li>/?id=CUSA00001&manual=ps4</li>
+<li>/?id=BLJS10120&official=ex</li>
+<li>/?id=psxdc=y</li>
+</ul>
+</div>
+
+<div class="section">
+<h4>### Resetボタン ###</h4>
+一度チェックを実行するとResetボタンが表示されます。Resetボタンはグローバル変数のリセットとテキストボックス/表示のクリアを行います。<br>
+チェックボックスにチェックを入れる際、変数に格納されている内容によってはそのままそのチェックが実行されるため、それを避けたい場合は押してください。<br>
+通常は押さなくても構いません。テキストボックスに新たなタイトルID/コンテンツID/URLを入力した場合も変数のリセットと表示のクリアが行われます。
+</div>
+
+<div class="section">
+<h4>### Tid Cid Check ###</h4>
+PS3/PS1アーカイブス/PSP/PSVitaのタイトルIDとコンテンツIDを対応付けたjsonからコンテンツIDを取得します。<br>
+コンテンツIDが必要な場合に実行されます。(全てのタイトルIDとコンテンツIDが登録されているわけではありません)<br>
+(NPSのtsvを拝借し、タイトルIDとコンテンツIDのみのjsonに変換しました)<br>
+<a href="json/ps3_psp_psv_psx_tid_cid.json" target="_blank">ps3_psp_psv_psx_tid_cid.json</a>
+</div>
+
+<div class="section">
+<h4>### OfficialPage/GameFAQs Check ###</h4>
+PS4/PSVitaの物理メディアのタイトルIDでGoogle検索してソニーのゲーム紹介ページかGameFAQsのリリース情報ページを探し、そのページから他の<br>
+チェックに必要なタイトルID(PS4の場合はCUSA、PSVitaの場合はPCSx)を探すと同時に、他の情報も取得/表示します。<br>
+PS4/PSVitaの物理メディアのタイトルIDを検出した場合は必ずこのチェックが実行されます。<br>
+ソニーのページとGameFAQsのページの両方が見つかった場合、前者が優先され、目的であるタイトルIDが見つからなかった場合にはGameFAQsから<br>
+タイトルIDを探すようにしています。目的であるタイトルIDが見つからなかった場合、他のチェックは出来ないのでそこで処理は終了です。<br>
+※ゲーム紹介ページ関連の処理はリージョンが日本だと判定された場合のみ実行されます。<br>
+※単純なスクレイピングなのでGoogleからは429エラーが返って来る可能性があります。<br>
+※Google検索で何らかのエラーが発生した場合はYahoo検索を行います。<br>
+取得/表示する情報(OfficialPage)<ul>
+<li>タイトル</li>
+<li>タイトルID</li>
+<li>コンテンツID</li>
+<li>ゲームカバー(ダイアログ)</li>
+<li>発売日</li>
+<li>ジャンル</li>
+<li>パブリッシャー</li>
+<li>JAN</li>
+<li>レーティング</li>
+<li>タイトル紹介(ダイアログ)</li>
+<li>動画・画像(ダイアログ)</li>
+<li>セーブ先(PSVitaタイトルの場合のみ)</li>
+<li>プレイヤー人数</li>
+</ul>
+取得/表示する情報(GameFAQs)<ul>
+<li>タイトル</li>
+<li>タイトルID</li>
+<li>発売日</li>
+<li>パブリッシャー</li>
+<li>JAN</li>
+<li>レーティング</li>
+</ul>
+</div>
+
+<div class="section">
+<h4>### OfficialPage Check ###</h4>
+PS1/PS2/PS3/PSP/PSVitaのタイトルID/コンテンツIDでソニーのゲーム紹介ページのURLを作成し、そこから情報を取得/表示します。<br>
+取得する情報はOfficial/GameFAQs Checkの場合と同じです。<br>
+このチェックは後述するChihiro CheckとTumbler Searchの後に実行されます。仮にそれらに失敗し、このチェックでコンテンツIDやTumbler Searchに<br>
+必要な新しいタイトル名が見つかった場合、再度Chihiro CheckやTumbler Searchが実行されます。<br>
+Official(JP)のチェックボックスにチェックが入っている場合のみ実行されます。また、リージョンが日本だと判定された場合のみ実行されます。<br>
+デフォルトでPS3/PSP/PSVitaを対象外にしているのは、紹介ページの情報表示に需要があるのかどうかが分からないためです。<br>
+Chihiro CheckやTumbler Searchの成功率を上げたい場合はセレクトボックスを変更してください。<br>
+PS1/PS2タイトルの場合、ページにアーカイブスの案内があればコンテンツIDが取得出来るので、PS1/PS2のタイトルIDからアーカイブスのChihiroの<br>
+jsonに到達出来る可能性があります。その処理が嫌な場合はChihiroのチェックボックスのチェックを外してください。<br>
+</div>
+
+<div class="section">
+<h4>### Tmdb Check ###</h4>
+PS1/PS2/PS3/PS4のタイトルIDから、ゲームのメタデータを記したTmdbのxml(PS2/PS3)/json(PS4)のURLを導出し、そこから情報を取得/表示します。<br>
+Tmdbのチェックボックスにチェックが入っている場合のみ実行されます。<br>
+※PS1/PS2タイトルではタイトルIDがSLUSの場合のみ実行されます。(PS3用にTmdbが用意されているのだと思います)<br>
+※全てのゲームに対してTmdbのxml/jsonが存在するわけでは無いようです。<br>
+※データが存在しない場合には "404" と表示されます。<br>
+URL例)
+<ul>
+<li>http://tmdb.np.dl.playstation.net/tmdb/BLJM61135_00_B8BD02836FC532DB83360C35C078B27033DE5AD3/BLJM61135_00.xml</li>
+<li>http://tmdb.np.dl.playstation.net/tmdb/NPJB00681_00_0AA98260CFD7D6D5DD823E85E0AF26882631DB4C/NPJB00681_00.xml</li>
+<li>http://tmdb.np.dl.playstation.net/tmdb2/CUSA06027_00_AA8E31E0B12E7F36486DBC3760F7375D8F4581F5/CUSA06027_00.json</li>
+<li>http://tmdb.np.dl.playstation.net/tmdb2/CUSA15979_00_EA325021A33ABB32FDD4AFC8EFF2138D99B06722/CUSA15979_00.json</li>
+</ul>
+取得/表示する情報 (PS2/PS3)
+<ul>
+<li>タイトル(各言語のタイトルを取得した場合は左側に表示される矢印をクリックで表示を切り替え)</li>
+<li>アイコン(ダイアログ)</li>
+<li>メディアタイプ(BD/Digital)</li>
+<li>ペアレンタルレベル(各言語のペアレンタルレベルを取得した場合は左側に表示される矢印をクリックで表示を切り替え)</li>
+<li>解像度情報</li>
+<li>サウンドフォーマット情報</li>
+</ul>
+取得/表示する情報 (PS4)
+<ul>
+<li>タイトル(各言語のタイトルを取得した場合は左側に表示される矢印をクリックで表示を切り替え)</li>
+<li>コンテンツID</li>
+<li>リージョン(コンテンツIDから判別)</li>
+<li>アイコン(ダイアログ)</li>
+<li>ペアレンタルレベル</li>
+<li>対戦/協力プレイの最大人数</li>
+<li>PSVRに対応しているかどうか</li>
+<li>PS4Proに対応しているかどうか</li>
+<li>pronunciation.xmlの内容(ダイアログ)</li>
+<li>背景画像(ダイアログ)</li>
+<li>BGM(at9)のリンク</li>
+</ul>
+</div>
+
+<div class="section">
+<h4>### Update Check ###</h4>
+PS3/PS4/PSP/PSVitaのタイトルIDから、ゲームの更新データの情報を記したxmlのURLを導出し、そこから情報を取得/表示します。<br>
+Updateのチェックボックスにチェックが入っている場合のみ実行されます。<br>
+※データが存在しない場合には "404" と表示されます。<br>
+URL例)
+<ul>
+<li>https://a0.ww.np.dl.playstation.net/tpl/np/ULJS00237/ULJS00237-ver.xml</li>
+<li>https://a0.ww.np.dl.playstation.net/tpl/np/BLJM61239/BLJM61239-ver.xml</li>
+<li>http://gs-sec.ww.np.dl.playstation.net/pl/np/PCSG01248/bd3e64d3afa5032fce82f7dc2b2a4b970b1bccc7cbe8c6491ea408d15376c8ed/PCSG01248-ver.xml</li>
+<li>http://gs-sec.ww.np.dl.playstation.net/plo/np/CUSA01516/9094aef07b2a3758025075d7b47308ad06ed8826b7c9c61c8cab735cff9c1200/CUSA01516-ver.xml</li>
+</ul>
+取得/表示する情報 (PSP/PS3)
+<ul>
+<li>タイトル(各言語のタイトルを取得した場合は左側に表示される矢印をクリックで表示を切り替え)</li>
+<li>更新データ適用後、ゲーム起動のために要求されるFWバージョン(pkgが複数ある場合は最新版の要求FWを表示)</li>
+<li>更新データのバージョン値 + pkgのリンク　+ pkgのサイズ (pkgが複数あるタイトルでは全て表示)</li>
+<li>コンテンツID(更新データのpkgのURLから切り取り)</li>
+<li>PARAM.HIPのリンク</li>
+</ul>
+取得/表示する情報 (PSVita)
+<ul>
+<li>タイトル(各言語のタイトルを取得した場合は左側に表示される矢印をクリックで表示を切り替え)</li>
+<li>コンテンツID</li>
+<li>更新データ適用後、ゲーム起動のために要求されるFWバージョン(incrementalがある場合は最新版の要求FWを表示)</li>
+<li>更新データのバージョン値 + pkgのリンク + pkgのサイズ (incremental/hibdidがある場合はそれらも表示)</li>
+<li>changeinfo.xmlのリンク</li>
+</ul>
+取得/表示する情報 (PS4)
+<ul>
+<li>タイトル(各言語のタイトルを取得した場合は左側に表示される矢印をクリックで表示を切り替え)</li>
+<li>コンテンツID</li>
+<li>リージョン(コンテンツIDから判別)</li>
+<li>mandatory yes/no</li>
+<li>更新データ適用後、ゲーム起動のために要求されるFWバージョン</li>
+<li>更新データのバージョン値</li>
+<li>パッチの合計サイズ(4GB毎に分割されているため合計という扱い)</li>
+<li>manifest json(PKG Manifest)のリンク</li>
+<li>ピース数(分割数)</li>
+<li>更新データのpkgのリンク(分割により複数存在する場合は全て表示)</li>
+<li>delta pkgのリンク</li>
+<li>changeinfo.xmlのリンク(PS4初期の更新データに存在(現在changeinfoはpkgに内包))</li>
+<li>playgo-manifest.xmlのリンク</li>
+</ul>
+</div>
+
+<div class="section">
+<h4>### Chihiro Check ###</h4>
+PS Storeの製品情報を記したjsonのURLを作成し、そこから情報を取得/一部を表示します。<br>
+Chihiroのチェックボックスにチェックが入っている場合のみ実行されます。<br>
+※データが存在しない場合には "404" と表示されます。<br>
+URL例)
+<ul>
+<li>https://store.playstation.com/store/api/chihiro/00_09_000/container/jp/ja/999/JP0102-NPJD00001_00-0000000000000000</li>
+<li>https://store.playstation.com/store/api/chihiro/00_09_000/container/us/en/999/UP1063-PCSE01100_00-DANGANV3VITA0000</li>
+<li>https://store.playstation.com/store/api/chihiro/00_09_000/container/cn/zh/999/UP8812-CUSA05210_00-ASIA000000000181</li>
+<li>https://store.playstation.com/store/api/chihiro/00_09_000/container/jp/ja/999/JV0123-NPMA41464_CN-0000000000185569</li>
+<li>https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/jp/ja/999/CUSA06027_00</li>
+<li>https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/us/en/999/CUSA06027_00</li>
+</ul>
+私が把握している製品情報のjsonのURLのフォーマットは以下の4種です。
+<ul>
+<li>https://store.playstation.com/chihiro-api/viewfinder/(国コード)/(言語コード)/999/(コンテンツID)</li>
+<li>https://store.playstation.com/store/api/chihiro/00_09_000/container/(国コード)/(言語コード)/999/(コンテンツID)</li>
+<li>https://store.playstation.com/store/api/chihiro/00_09_000/titlecontainer/(国コード)/(言語コード)/999/(PS4タイトルのタイトルID)</li>
+<li>https://store.playstation.com/valkyrie-api/(言語コード)/(大文字の国コード)/19/resolve/コンテンツID</li>
+</ul>
+<br>
+CheckerではcontainerとtitlecontainerのURLの作成を採用しています。<br>
+titlecontainerはPS4タイトルでのみ(？)有効っぽく、異なるリージョンのjson取得にも対応しているようです。<br>
+CUSA06027(日本版MHW)を例にすると、国コード/言語コードがjp/jaだとCUSA06027のjsonが取得出来、us/enだと北米版MHWであるCUSA07713のjsonが取得出来ます。<br>
+<br>
+CheckerではDLCやテーマのjson取得も考慮し、titlecontainerで済むPS4のゲーム本編(PS4のタイトルID入力)以外はcontainerのURLを作成するようにしています。<br>
+containerはコンテンツIDが必要なため、PS4以外のタイトルIDを入力した場合は、Update Check, Tid Cid Check, Tumbler Search, OfficialPage Checkで取得したコンテンツIDで<br>
+URLを作成して情報の取得を試みます。データが存在しない場合には "404" と表示されます。Tid Cid Check, Tumbler Search はChihiro Checkに組み込まれています。<br>
+Tid Cid Checkが失敗した場合、他のチェックで取得したタイトル名を用いてPS StoreのAPIであるValkyrieの検索機能tumbler-searchのURLを作成し、コンテンツIDを探します。<br>
+(tumbler-searchのjsonからコンテンツIDを探す処理をCheckerではTumbler Searchと表記しています)<br>
+<br>
+国コードと言語コードに関しては、Chihiroのセレクトボックスが"default"の場合、6通りの国コードと言語コードの組み合わせから、他のチェックで判別したリージョン情報をもとに<br>
+決定します。("jp/ja","us/en","gb/en","kr/ko","hk/zh","hk/en")(リージョンが判別出来ていない場合、リージョンをUSと見なし、国コードと言語コードは"us/en"になります。)<br>
+セレクトボックスが"default"かつPS StoreのURLを入力してチェックを開始した場合は、URL中の国コードと言語コードを使用するようにしています。<br>
+国コードと言語コードの組み合わせは94通り存在するため、PS StoreのURLを入力してチェックを開始しない限り、データが存在しない無効なURLが作成される可能性があります。<br>
+その事と、PS4タイトルの別リージョンのjsonを取得したい場合を考慮し、セレクトボックスで国コードと言語コードを選択出来るようにしています。<br>
+セレクトボックスで"default"以外を選択すると、選択した国コードと言語コードを用いたURLが作成されます。<br>
+<br>
+取得/表示する情報
+<ul>
+<li>タイトル</li>
+<li>タイトルID</li>
+<li>コンテンツID</li>
+<li>製品ページのリンク(国コード,言語コード,コンテンツIDからURLを作成)</li>
+<li>製品画像(ダイアログ)(各プラットフォーム向けに分けているのか、複数枚存在)</li>
+<li>パブリッシャー</li>
+<li>発売日</li>
+<li>レーティング</li>
+<li>コンテンツの種別</li>
+<li>プラットフォーム</li>
+<li>Eligibilities(ダイアログ)</li>
+<li>Entitlements(ダイアログ)</li>
+<li>価格</li>
+<li>Discount/Reward(ダイアログ)</li>
+<li>コンテンツのサイズ</li>
+<li>Non default sku(ダイアログ)</li>
+<li>製品の動画/スクリーンショット(ダイアログ)</li>
+<li>製品の説明文(ダイアログ)</li>
+<li>評価件数の合計</li>
+<li>評価の平均値</li>
+<li>星5～星1の数</li>
+<li>関連製品のリンク(1?relationship=)</li>
+<li>親製品のタイトル名</li>
+<li>親製品のリンク</li>
+</ul>
+コンテンツのサイズは、Checkerは1024B=1KBで計算しますが、PS Storeは1000B=1KBで計算するようなので結果は異なります。<br>
+Eligibilitiesは、おそらく、所持している場合は購入可能/不可になる製品の情報が格納された配列です。<br>
+おそらく、operatorがtrueの製品を所持していると購入可能となり、falseの製品を所持していると購入不可となります。<br>
+CheckerではIDとoperatorの情報を表示します。他の情報は役割が不明なので表示するようにはしていません。<br>
+IDがコンテンツIDの場合は、クリックするとそのIDでChihiro Checkを実行出来るようにしています。<br>
+Entitlementsは、おそらく、購入する事で実際に得られる製品の情報が格納された配列です。<br>
+通常は1つで、バンドル製品の場合に複数の製品の情報が格納されています。Checkerでは複数件登録されている場合に表示します。(タイトル、ID、サイズ)<br>
+Discount/Rewardは、Checkerでは、セール/Plus限定価格/EAAccess限定価格、の情報が存在する場合に表示します。<br>
+rewardsという配列に格納されており、内容が分かりやすいようにCheckerではDiscount/Rewardと表記しています。<br>
+サイズ、Eligibilities、Entitlements、rewardsはdefault_skuという製品情報のオブジェクトから取得しています。<br>
+default_skuの他にskusという製品情報の配列が存在し、default_skuの内容を含め複数件登録されている場合があります。<br>
+通常はdefault_skuと同内容の物のみですが、私が把握している限りではdefault_skuのoperatorがfalseの場合に購入不可ではなく製品内容を変更したい場合に複数件登録されています。<br>
+(バレットガールズ2のDLCでのみ確認。バレットガールズ2のDLCは、バレットガールズの同名のDLCを所持している場合に無料になる(それをoperatorで判定している？))<br>
+複数件登録されている場合、CheckerではNon default skuとして表示します。(ID、価格、Eligibilities、Entitlements、Discount/Reward)<br>
+<br>
+テスト不足ですが、PS VideoのコンテンツIDを用いたChihiro Checkにも対応しています。<br>
+取得/表示する情報 (PS Video)<ul>
+<li>シリーズ名(sub_categoryがseriesの場合)</li>
+<li>タイトル(sub_categoryがseason或いはfilmの場合)</li>
+<li>タイトル及びエピソード名(sub_categoryがepisodeの場合)</li>
+<li>製品ページのリンク(国コード,言語コード,コンテンツIDからURLを作成)</li>
+<li>製品画像(ダイアログ)(各プラットフォーム向けに分けているのか、複数枚存在)</li>
+<li>パブリッシャー</li>
+<li>発売日</li>
+<li>コピーライト</li>
+<li>ジャンル</li>
+<li>スタジオ</li>
+<li>価格</li>
+<li>Discount/Reward(割引情報)(ダイアログ)</li>
+<li>製品の説明文(ダイアログ)</li>
+<li>エピソードリスト(sub_categoryがepisodeの場合)(ダイアログ)</li>
+<li>評価件数の合計</li>
+<li>評価の平均値</li>
+<li>星5～星1の数</li>
+<li>sub_categoryがseasonのコンテンツIDでChihiro Checkを実行するリンク<br>
+(sub_categoryがseriesの場合或いはepisodeの場合に表示)</li>
+</ul>
+</div>
+
+<div class="section">
+<h4>### Tumbler Search ###</h4>
+Chihiro Checkで有効なURLが作成されなかった場合に、PS StoreのAPIであるValkyrieの検索機能tumbler-searchのURLを作成し、コンテンツIDを探します。<br>
+URLの作成では他のチェックで取得したタイトル名を使用します。(検索結果を増やすため、検索結果を減らす可能性がある文字以降を取り除いた文字列でURLを作成します)<br>
+(検索結果から無駄を省くため、"platform=vita" のようにして検索結果を対象のハードに絞ります)<br>
+tumbler-searchのjsonから、以下に該当する製品のコンテンツIDを探します。
+<ul>
+<li>タイトルIDが一致</li>
+<li>タイトル名が一致(®や™は無い物として扱います)</li>
+<li>コンテンツIDの末尾16文字が一致</li>
+</ul>
+コンテンツIDの末尾16文字はゲームの開発者が自由に設定可能な文字列です。そのため、全く別の製品と一致してしまう可能性があります。
+</div>
+
+<div class="section">
+<h4>### Redump Check ###</h4>
+PS1/PS2/PSPのタイトルIDをRedumpの検索機能に投げ、Redumpから情報を取得/表示します。<br>
+Redumpのチェックボックスにチェックが入っている場合のみ実行されます。<br>
+取得/表示する情報<ul>
+<li>Title</li>
+<li>Media</li>
+<li>Region</li>
+<li>Languages</li>
+<li>Serial</li>
+<li>EXE date</li>
+<li>Version</li>
+<li>Edition</li>
+<li>Layerbreak</li>
+<li>Number of tracks</li>
+<li>Write offset</li>
+<li>Barcode</li>
+<li>Internal Serial</li>
+<li>Size</li>
+<li>CRC-32</li>
+<li>MD5</li>
+<li>SHA-1</li>
+<li>Rings</li>
+</ul>
+</div>
+
+<div class="section">
+<h4>### PSXDatacenter Check ###</h4>
+PS1/PS2のタイトルIDからPSXDatacenterのURLを探し、PSXDatacenterから情報を取得/表示します。<br>
+URLはCheckerが持つ <a href="json/ps1_ps2_psxdatacenter.json" target="_blank">ps1_ps2_psxdatacenter.json</a> から探します。<br>
+PSXDatacenterのチェックボックスにチェックが入っている場合のみ実行されます。<br>
+テスト不足であり、また需要があるかどうか分からないため、デフォでは無効にしています。<br>
+取得/表示する情報<ul>
+<li>Title</li>
+<li>Serial</li>
+<li>Region</li>
+<li>Developer</li>
+<li>Publisher</li>
+<li>Release Date</li>
+<li>Game Cover(ダイアログ)</li>
+<li>Disc Information(ダイアログ)</li>
+<li>Description(ダイアログ)</li>
+<li>Game Features(ダイアログ)</li>
+<li>Screenshots(ダイアログ)</li>
+<li>Emulation Compatibility(ダイアログ)</li>
+<li>Game Controls(ダイアログ)</li>
+<li>Game Cheats(ダイアログ)</li>
+<li>High Resolution Covers(ダイアログ)</li>
+<li>Other Regions Released(ダイアログ)</li>
+</ul>
+</div>
+
+<div class="section">
+<h4>### Download ###</h4>
+ご自身のWebサーバ環境で使用したい場合は以下からダウンロードしてください。<br>
+<a href="http://kood.info/files/pstic/PlayStationTitleInfoChecker%20v1.3.2.zip">PlayStationTitleInfoChecker v1.3.2.zip</a><br>
+スクレイピングに使用するajax.phpとredump.phpではリファラーの判定を行っています。<br>
+"http://localhost/" 以外で使用する場合は、11行目のコメント(//)を外してから使用してください。
+</div>
+
+<div class="section">
+<h4>### Credits ###</h4>
+<ul>
+<li><a href="https://www.psdevwiki.com/" target="_blank">psdevwiki.com</a></li>
+<li><a href="http://wololo.net/talk/viewtopic.php?f=54&t=44091" target="_blank">Proxima - Calculating PSVita title update xml links</a></li>
+<li><a href="https://twitter.com/Zer0xFF/status/1015724430843088896" target="_blank">Zer0xFF - Calculating PS4 title update xml links</a></li>
+<ul>
+</div>
+
+
+</div>
+</body>
+</html>

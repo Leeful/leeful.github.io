@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Changelog - PlayStation Title Info Checker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="readme">
+
+<div class="section">
+<br>
+<a href="./">http://kood.info/pstic/</a><br>
+<a href="readme.html">http://kood.info/pstic/readme.html</a>
+</div>
+
+<div class="section">
+<h4>### Changelog ###</h4>
+v1.3.2 - 2020/06/04<ul>
+<li>Chihiro Checkでskusの情報取得を追加。skusに複数登録されている場合、Non default skuとして出力</li>
+</ul>
+v1.3.1 - 2020/06/03<ul>
+<li>Eligibilitiesのダイアログ内からChihiro Checkを実行した場合に正常に実行されない事がある問題の修正</li>
+<li>v1.3.0の書き直しでレガシーなブラウザとの互換性が失われたため、互換性向上のために変数の宣言にletを使用しないように</li>
+<li>Array.fromのPolyfillを実装(IEでTumbler Searchの検索条件の準備が出来ない問題の修正)</li>
+</ul>
+v1.3.0 - 2020/05/22<ul>
+<li>コードを全体的に書き直し</li>
+<li>適切なタイミングでのみ入力の無効化/有効化を行うように</li>
+<li>取得したコンテンツIDを配列で管理するように(これまでは直近に取得したコンテンツIDを使用していた)</li>
+<li>タイトル名を複数取得した場合のタイトル名切り替えアイコンをタイトル名の左側に表示するように</li>
+<li>SLUSのPS1/PS2タイトルでTmdb Checkを行うように</li>
+<li>OfficialPage/GameFAQs CheckでGoogle検索に失敗した場合はYahoo検索を行うように</li>
+<li>リージョンが日本以外の場合もGameFAQs Checkを行うように(VCKSやVCASをサポート)</li>
+<li>OfficialPage Checkの説明文部分の背景色が黒の場合は白に変更するように</li>
+<li>ダイアログを開いた際にダイアログのスクロール位置が一番上にならない事がある問題の修正</li>
+<li>ハード/メディアが判別出来ないタイトルIDでOfficialPage Check,Chihiro Check,Redump Checkを行うように</li>
+<li>Tid Cid Check(tid_cid.jsonのチェック)をサーバー側で行うように</li>
+<li>Chihiro Checkでプラットフォーム情報の取得/表示を追加</li>
+<li>Valkyrie Checkの名前をTumbler Searchに変更</li>
+<li>Tumbler Searchのヒット率向上</li>
+<li>PSXDatacenterからPS1/PS2タイトルの情報を取得するPSXDatacenter Checkを追加(デフォでは無効)</li>
+<li>いくつかのダイアログの横幅を調整</li>
+</ul>
+v1.2.0 - 2020/04/13<ul>
+<li>ソニーのゲーム紹介ページからPS1/PS2/PS3/PSP/PSVitaタイトルの情報を取得するOfficialPage Checkを追加。<br>
+(Region Checkで日本のタイトルと判定された場合のみ実行)<br>
+(デフォルトではPS1/PS2タイトルでのチェックのみ有効。PS3/PSP/PSVitaタイトルでチェックする場合は設定変更)</li>
+<li>RedumpからPS1/PS2/PSPタイトルの情報を取得するRedump Checkを追加。</li>
+<li>PS4/PSVitaのパッケージのタイトルIDから実際のタイトルIDを探すOfficialPage/GameFAQs Checkを追加。<br>
+(日本のパッケージ(PCJS/PLJM/VCJS/VLJS/VLJM)のみサポート<br>
+(APIを叩いているわけではないので、429エラーが返って来て失敗する可能性が高い)</li>
+<li>PS3/PS1アーカイブス/PSP/PSVitaのタイトルID-コンテンツIDを対応付けたjsonを用意。(NPSのtsvから必要な項目を拝借)<br>
+(コンテンツID無しでChihiro Checkをしようとした場合やValkyrie Checkに失敗した場合等に使用)</li>
+<li>Type CheckでNPEJのタイトルを"Third Party PS3"として扱うように。</li>
+<li>Chihiroから取得したコンテンツIDは必ず表示するように変更。</li>
+<li>ChihiroにmediaListとpromomediaの両方が存在する場合は後者を表示するように変更。</li>
+<li>初回チェック終了後に表示されるボタンの名前をDeleteからResetに変更。</li>
+<li>URLのパラメータ"key"を"id"に変更</li>
+</ul>
+v1.1.0 - 2020/04/04<ul>
+<li>URLで指定したハード(psp/ps3/vita/ps4)のタイトルとしてUpdateとTmdbのURLの導出だけを行うManual modeを追加。</li>
+<li>PS4タイトルでValkyrie CheckによってコンテンツIDが取得されてもcontainerではなくtitlecontainerのURLが作成される問題の修正。</li>
+<li>ChihiroからのPSVitaタイトルのスクショ取得の改善。(typeが132のスクショのURLを取得しないように)</li>
+<li>コンテンツIDのRegion CheckにKoreaを追加。</li>
+</ul>
+v1.0.9 - 2020/03/29<ul>
+<li>"Char 0x0 out of allowed range" エラーが発生するxml(NPEB00900のTmdb)に対応。</li>
+<li>PS3タイトルのTmdbでアイコンが複数ある場合にアイコンが表示されなかったのを修正。</li>
+</ul>
+v1.0.8 - 2020/02/02<ul>
+<li>Chihiro Checkにparent_linksの情報取得を追加。(親のタイトル名、製品ページのリンク)</li>
+</ul>
+v1.0.7 - 2020/01/21<ul>
+<li>NPXS3xxxxをPS4タイトルとして扱うように。<br>
+(NPXS30020、NPXS30031、NPXS30069、NPXS30070 等の更新データが存在)</li>
+<li>Valkyrie Checkでループする可能性があるのを修正。</li>
+<li>Valkyrie Checkで不適切なURLが生成される事があるのを修正。</li>
+<li>Valkyrie CheckでコンテンツIDの後ろの16文字のチェックとタイトルの完全一致チェックの順番を逆に。(後者を先に行うように)</li>
+</ul>
+v1.0.6 - 2020/01/12<ul>
+<li>xmlやjsonがエラー(404)ではなく空ページを返す場合にエラーとして扱うよう修正。</li>
+<li>PS4タイトルのTmdb Checkでpronunciation.xmlはリンクの表示ではなく情報を取得してダイアログにするように変更。</li>
+</ul>
+v1.0.5 - 2019/12/13<ul>
+<li>チェックが完了するまでテキストボックス/チェックボックス/セレクトボックスの変更を受け付けないように。</li>
+<li>Tmdb CheckとUpdate Checkのタイトル名の取得を書き直し。</li>
+<li>PSP minisのタイトルIDでTmdb Checkが行われるように修正。</li>
+<li>PSVita、PS4のUpdate Checkで要求FWの小数点第三位が四捨五入されていたのを修正。</li>
+<li>Tmdbのチェックボックスにチェックを入れた際にタイトルIDが変数に入っていてかつそのタイトルIDがPS3或いはPS4だと判別されていれば<br>
+Tmdb Checkを行うように。</li>
+<li>Updateのチェックボックスにチェックを入れた際にタイトルIDが変数に入っていてかつそのタイトルIDがPSP、PSVita、PS3、PS4の何れか<br>
+だと判別されていればUpdate Checkを行うように。</li>
+<li>Chihiroのチェックボックスにチェックを入れた際にPS4のタイトルIDが変数に入っているか、コンテンツIDが変数に入っているか、タイトルIDと<br>タイトル名が変数に入っているかの何れかであれば、Chihiro Checkを行うように。<br>
+(これに伴いChihiroのチェックボックスのチェックを外した場合にセレクトボックスを非表示にしていたのを撤廃)</li>
+<li>Chihiro Checkにeligibilities(その製品を購入/DLするために必要なタイトル？)の情報取得を追加。(ダイアログ)</li>
+<li>Chihiro Checkにentitlementsの情報取得を追加。(中に複数個登録されている場合のみ)(ダイアログ)<br>
+(おそらく、その製品を購入する事で得られるタイトルのリスト。通常中身は1つで、セット/バンドルの場合に複数個登録されている)</li>
+<li>Chihiro Checkでrewards(割引やプラス限定等の情報のリスト)から取得した情報はダイアログにするように変更。</li>
+<li>初回のチェック終了以降、グローバル変数のリセットと表示された情報の削除を行うDeleteボタンを表示するように。<br>
+(チェックボックスとセレクトボックスを変更してから別のID、URLでチェックしたい時向け)</li>
+</ul>
+v1.0.4 - 2019/12/10<ul>
+<li>PSP、PSVita、PS3のUpdate CheckでPKGのサイズをリンクの隣に表示するように変更。</li>
+<li>Tmdb CheckとUpdate Checkで各言語のタイトル名を取得した場合はそれらを表示出来るように。<br>
+(タイトル名の隣に表示を切り替える矢印アイコンを表示)</li>
+<li>PS3タイトルのTmdb Checkで各リージョンのペアレンタルレベル値を取得した場合はそれらを表示出来るように。<br>
+(ペアレンタルレベルの隣に表示を切り替える矢印アイコンを表示)</li>
+<li>製品画像をサイズが大きい順に表示するように。(typeの値の降順に表示し、type1をtype9の前に移動)<br>
+(サイズの取得を行わずtypeで判断するため、タイトルによってはサイズ順にならない事があるかも(未確認))</li>
+<li>製品に動画/スクショが存在する場合は項目名をVideo/Screenshot、動画のみの場合はVideo、スクショのみの場合はScreenshotとするように。</li>
+<li>Valkyrie Checkの書き直し。</li>
+<li>Lazy Loadが動作しない事がある問題の対処。(ダイアログのスクロールでもLazy Loadを実行するように)</li>
+</ul>
+v1.0.3 - 2019/12/08<ul>
+<li>どのような画像のURLを取得した場合でも、画像閲覧用ダイアログを開くリンクを表示するように。<br>
+(これに伴いTmdb(PS4)の各言語のアイコン、Chihiroの各Typeの製品画像の取得に対応)<br>
+(v1.0.2まではChihiroのVideos/Screenshotsでのみ採用しており、他は単に画像のリンクを表示していた)</li>
+<li>ChihiroからのPSVitaタイトルのスクショ取得の改善。</li>
+</ul>
+v1.0.2 - 2019/12/04
+<ul>
+<li>Valkyrie Check速度向上のためにvalkyrie-apiのfaceted-searchではなくtumbler-searchを使用するように。<br>
+(検索結果としてゲーム本編だけが取得出来るためjsonが小さくなりかつtypeの確認をしなくても済むように)</li>
+<li>セレクトボックスに国/言語コードを6つ追加。 (de/de, au/en, gb/en, es/es, fr/fr/, it/it)</li>
+<li>Update CheckでPARAM_xx.HIPやChangeInfo_xxが見つかった場合、それらのリンクをまとめたダイアログを開くリンクを表示するように。</li>
+<li>MRTC*****形式のタイトルID(PS3)のチェックに対応。</li>
+<li>PS Video(NPMA/NPVA/NPVB)のチェックに対応。(コンテンツIDかURLを入力した場合のみRegion CheckとChihiro Checkを実行)<br>
+(PS VideoのChihiroの内容の理解が浅いため、情報表示は不完全)</li>
+</ul>
+v1.0.1 - 2019/12/02</a>
+<ul>
+<li>ChihiroからPSVitaタイトルのスクショを取得した場合に、同じ物が表示されるタイトルがある問題に対処。</li>
+<li>Tmdb CheckとUpdate Checkで取得したタイトル名が異なる場合かつValkyrie Checkが失敗した場合、Update側のタイトル名でも<br>
+Valkyrie Checkを行うように。(v1.0.0ではどちらか片方でタイトル名を取得出来ていればそれを使用していた)</li>
+<li>Valkyrie Checkにタイトル名の比較を追加。(比較に使用するタイトル名は検索用に短くする前の物)</li>
+</ul>
+v1.0.0 - 2019/12/01
+<ul><li>公開</li></ul>
+</div>
+
+</div>
+</body>
+</html>

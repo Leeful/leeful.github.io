@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PlayStation Title Info Checker</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/sha.js"></script>
+<script src="js/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/black-tie/jquery-ui.min.css">
+<script>
+$(function(){
+	$("#input_id").val("");
+	$("#input_id").focus();
+	$("#reset").hide();
+	const reg1 = /^\s?[a-zA-Z]{4}-?\d{5}_?([a-zA-Z0-9]{2})?(\s|　)?$/;
+	const reg2 = /[a-zA-Z]{2}\d{4}-[a-zA-Z]{4}\d{5}_[a-zA-Z0-9]{2}-[a-zA-Z0-9]{16}/;
+	
+	/* 初回,ウィンドウサイズ変更時にoutput_areaの位置を調整 */
+	SetOaPosition();
+	function SetOaPosition(){
+		const window_w = $(window).width();
+		const input_w = $("#input_id").width();
+		const position = ((window_w　-　input_w)/2)-15;
+		$("#output_area").css("padding-left",position+"px");
+	}
+	$(window).resize(function(){
+		SetOaPosition();
+	});
+	
+	/* chihiroのセレクトボックスを作成 */
+	const country_lang = ["default", "jp/ja", "us/en", "ae/ar", "bh/ar", "kw/ar", "lb/ar", "om/ar", "qa/ar", "sa/ar", "dk/da", "at/de", "ch/de", "de/de", "lu/de", "ae/en", "ar/en", "au/en", "bg/en", "bh/en", "br/en", "ca/en", "cl/en", "co/en", "cy/en", "cz/en", "dk/en", "fi/en", "gb/en", "gr/en", "hk/en", "hr/en", "hu/en", "id/en", "ie/en", "il/en", "in/en", "is/en", "kw/en", "lb/en", "mt/en", "mx/en", "my/en", "no/en", "nz/en", "om/en", "pe/en", "pl/en", "qa/en", "ro/en", "sa/en", "se/en", "sg/en", "si/en", "sk/en", "th/en", "tr/en", "tw/en", "za/en", "ar/es", "cl/es", "co/es", "cr/es", "ec/es", "es/es", "gt/es", "hn/es", "mx/es", "pa/es", "pe/es", "py/es", "sv/es", "fi/fi", "be/fr", "ca/fr", "ch/fr", "fr/fr", "lu/fr", "ch/it", "it/it", "kr/ko", "be/nl", "nl/nl", "no/no", "pl/pl", "br/pt", "pt/pt", "ru/ru", "ua/ru", "se/sv", "tr/tr", "cn/zh", "hk/zh", "hk/ch", "tw/ch"];
+	$.each(country_lang,function(i,cl){
+		const op = "<option value='"+ cl +"'>"+ cl +"</option>"; 
+		$("#chihiro_sb").append(op);
+	})
+	
+	/* URLパラメータの解析,反映 */
+	const url_param = location.search.substring(1);
+	var param_array = [];
+	if(url_param){
+	  const param = url_param.split("&");
+	  for(var i=0; i < param.length; i++) {
+		const param_item = param[i].split("=");
+		param_array[param_item[0]] = param_item[1];
+	  }
+	}
+	if(param_array.tmdb=="n")$("#tmdb").prop("checked", false);
+	if(param_array.update=="n")$("#update").prop("checked", false);
+	const chihiro = param_array.chihiro;
+	if(chihiro!=undefined && country_lang.indexOf(chihiro)>0){
+		$("#chihiro_sb").val(chihiro);
+	}
+	if(param_array.chihiro=="n")$("#chihiro").prop("checked", false);
+	if(param_array.official=="n")$("#official").prop("checked", false);
+	if(param_array.official=="ex")$("#official_sb").val("ex");
+	if(param_array.redump=="n")$("#redump").prop("checked", false);
+	if(param_array.psxdc=="y")$("#psxdc").prop("checked", true);
+	//if(param_array.psxdc=="n")$("#psxdc").prop("checked", false);
+	const manual_array = ["psp","ps3","vita","ps4"];
+	var manual = param_array.manual;
+	if(manual!=undefined && manual_array.indexOf(manual)>-1){
+		$(".config_area").hide();
+		const manual_str = "Manual mode : " + manual.toUpperCase();
+		const manual_elm = "<span id='manual'>" + manual_str + "</span>";
+		$("#reset").after(manual_elm);
+	}else{
+		manual = undefined;
+	}
+	const id = param_array.id;
+	if(id!=undefined && (id.match(reg1) || id.match(reg2))){
+		$("#input_id").val(id);
+		InputIdCheck();
+	}
+	
+	/* 入力値の解析,チェック実行 */
+	$("#input_id").on("input",function(){
+		InputIdCheck();
+	});
+	function InputIdCheck(){
+		var input_id = $("#input_id").val();
+		if(input_id.match(reg1)){
+			EmptyOa();
+			input_id = input_id.match(/[a-zA-Z]{4}-?\d{5}/);
+			input_id　= input_id[0].toUpperCase().replace(/-/,"");
+			$("#input_id").val(input_id);
+			IdCheck(input_id,"title",manual);
+		}else if(input_id.match(reg2)){
+			EmptyOa();
+			if(!input_id.match(/(store.playstation.com)/)){
+				input_id = input_id.match(reg2)[0].toUpperCase();
+				$("#input_id").val(input_id);
+				IdCheck(input_id,"content",manual);
+			}else{
+				IdCheck(input_id,"url",manual);
+			}
+		}
+	}	
+	
+	/* チェックボックス,セレクトボックス変更時に各チェックを実行 */
+	$("#update").on("change",function(){
+		if($(this).prop("checked")){
+			ReUpdateCheck();
+		}
+	});	
+	$("#tmdb").on("change",function(){
+		if($(this).prop("checked")){
+			ReTmdbCheck();
+		}
+	});	
+	$("#chihiro").on("change",function(){
+		if($(this).prop("checked")){
+			ReChihiroCheck();
+		}
+	});
+	$("#chihiro_sb").on("change",function(){
+		if($("#chihiro").prop("checked")){
+			ReChihiroCheck();
+		}
+	});	
+	$("#official").on("change",function(){
+		if($(this).prop("checked")){
+			ReOfficialCheck();
+		}
+	});	
+	$("#official_sb").on("change",function(){
+		if($(this).val()=="ex"){
+			ReOfficialCheck();
+		}
+	});
+	$("#redump").on("change",function(){
+		if($(this).prop("checked")){
+			ReRedumpCheck();
+		}
+	});
+	$("#psxdc").on("change",function(){
+		if($(this).prop("checked")){
+			RePSXDcCheck();
+		}
+	});
+	
+	/* タイトルをダブルクリックした際にパラメータを付与したURLをコピー */
+	$("#title").on("dblclick",function(){
+		var page_url = location.origin + location.pathname;
+		var param_array = [];
+		if($("#output1").text()!=""){
+			param_array.push("id=" + $("#input_id").val())
+		}
+		if(!$("#tmdb").prop("checked"))param_array.push("tmdb=n");
+		if(!$("#update").prop("checked"))param_array.push("update=n");
+		if(!$("#chihiro").prop("checked")){
+			param_array.push("chihiro=n");
+		}else if($("#chihiro_sb").val()!="default"){
+			param_array.push("chihiro="+$("#chihiro_sb").val());
+		}
+		if(!$("#official").prop("checked")){
+			param_array.push("official=n");
+		}else if($("#official_sb").val()=="ex"){
+			param_array.push("official=ex");
+		}		
+		if(!$("#redump").prop("checked"))param_array.push("redump=n");
+		if($("#psxdc").prop("checked"))param_array.push("psxdc=y");
+		//if(!$("#psxdc").prop("checked"))param_array.push("psxdc=n");
+		if(manual!=undefined)param_array.push("manual=" + manual);
+		for(var i in param_array){
+			var concat_str = "&";
+			if(i==0) concat_str = "?";
+			page_url += concat_str + param_array[i];
+		}
+		console.log("URL : " + page_url);
+		$("<textarea>").attr("id","dummy").val(page_url).prop({
+			"selectionStart":0,
+			"selectionEnd":page_url.length
+			}).appendTo("header").trigger("focus");
+		document.execCommand("copy");
+		if(window.clipboardData){
+			window.clipboardData.setData("Text" , page_url);
+		}
+		$("#dummy").remove();
+	});
+	
+});
+</script>
+</head>
+<body>
+
+<header>
+	<h2 id="title">PlayStation Title Info Checker</h2>
+	<p>PS1/PS2/PS3/PS4/PSP/PSVITA</p>
+</header>
+
+<div class="input_area">
+	<input type="text" id="input_id" placeholder="Title ID / Content ID / Store URL">
+	<br>
+	<span class="config_area">
+		<input type="checkbox" id="tmdb" checked>Tmdb(PS3/PS4)
+		<input type="checkbox" id="update" checked>Update(PS3/PS4/PSP/PSVITA)<br>
+		<input type="checkbox" id="chihiro" checked>Chihiro(PS Store)
+		<select id="chihiro_sb"></select>
+		<input type="checkbox" id="official" checked>Official(JP)
+		<select id="official_sb">
+			<option value="default">PS1/PS2 Only</option>
+			<option value="ex">+ PS3/PSP/PSVITA</option>
+		</select>
+		<br>
+		<input type="checkbox" id="redump" checked>Redump(PS1/PS2/PSP)
+		<input type="checkbox" id="psxdc">PSXDatacenter(PS1/PS2)
+	</span>
+	<button id="reset">Reset</button>
+	<br>
+</div>
+
+<div id="output_area">
+	<!-- 入力値から分かる情報等 -->
+	<ul id="output1"></ul>
+	<!-- ソニーのゲーム紹介ページから取得した情報 -->
+	<ul id="output2"></ul>
+	<!-- GameFAQsのリリース情報ページから取得した情報 -->
+	<ul id="output3"></ul>
+	<!-- TMDBのxml/jsonから取得した情報 -->
+	<ul id="output4"></ul>
+	<!-- 更新データのxmlから取得した情報 -->
+	<ul id="output5"></ul>
+	<!-- chihiroのjsonから取得した情報 -->
+	<ul id="output6"></ul>
+	<!-- Redumpから取得した情報 -->
+	<ul id="output7"></ul>
+	<!-- PSXDatacenterから取得した情報 -->
+	<ul id="output8"></ul>	
+</div>
+
+<footer>
+<a href="readme.html">Readme</a> | <a href="https://twitter.com/kood_infothief" target="_blank">@kood_infothief</a>
+<br>PlayStation Title Info Checker v1.3.2
+</footer>
+
+</body>
+</html>
