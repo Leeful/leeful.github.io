@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>6.72 Exploit</title>
+</head>
+<body>
+<script id="myScript1"></script>
+<script id="myScript2"></script>
+<script id="myScript3"></script>
+<script id="myScript4"></script>
+<script id="myScript5"></script>
+<script id="myScript6"></script>
+<script id="myScript7"></script>
+<script id="myScript8"></script>
+<script id="myScript9"></script>
+<script>
+document.write("<h1 style='color:black;font-size:25px;text-align:center;'>Exploit Loading, Please Wait 20 Seconds</h1>");
+if (sessionStorage.Exploit == null){
+sessionStorage.Exploit = 1;
+setTimeout(function(){var url1="exploit.js"; document.getElementById('myScript1').src = url1;}, 1500);
+setTimeout(function(){var url2="helpers.js"; document.getElementById('myScript2').src = url2;}, 2500);
+setTimeout(function(){var url3="malloc.js"; document.getElementById('myScript3').src = url3;}, 3500);
+setTimeout(function(){var url4="rop.js"; document.getElementById('myScript4').src = url4}, 4500);
+setTimeout(function(){var url5="syscalls.js"; document.getElementById('myScript5').src = url5;}, 5500);
+setTimeout(function(){var url6="jailbreak.js"; document.getElementById('myScript6').src = url6;}, 6500);
+setTimeout(function(){var url7="loader.js"; document.getElementById('myScript7').src = url7;}, 7500);
+setTimeout(function(){var url8="payload.js"; document.getElementById('myScript8').src = url8;}, 8500);
+setTimeout(function(){var url9="c-code.js"; document.getElementById('myScript9').src = url9;}, 9500);
+} else {document.body.innerHTML = "<h1 style='color:black;font-size:25px;text-align:center;'>Error</h1>";}
+</script>
+</body>
+</html>
