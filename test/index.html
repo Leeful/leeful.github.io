@@ -26,25 +26,16 @@ function check_jb_finished() {
 </head>
 <body>
 <h1 style='color:black;font-size:25px;font-family:sans-serif;text-align:center;'>6.72 Exploit + Mira.elf</h1>
-<br><br><br>
-<div id=ScrOverlay style='text-align:center; font-size:25px'><pre id=cacheUPDtxt class=cacheUPD></pre><div id=CacheProgress></div></div>
-<div style='text-align:center;' onclick="load_jb();">
-<br><br><br><br><br><a href="#">Click To Begin</a>
-</div>
-
-
+<div id=ScrOverlay class=cacheUPDbg><pre id=cacheUPDtxt class=cacheUPD></pre><div id=CacheProgress><div id=CacheBar></div></div></div>
 <script>
 if (window.applicationCache.status == '0') {function DLProgress(e){ScrOverlay.style.display="block";
 Percent=(Math.round(e.loaded / e.total * 100));
 cacheUPDtxt.innerHTML="Installing Offline Cache: " + Percent + "%";}
-function DisplayCacheProgress(){setTimeout(function(){cacheUPDtxt.innerHTML="Cache Installed Successfully";location.reload();},1000);
-setTimeout(function(){ScrOverlay.style.opacity="0";},2500);
-setTimeout(function(){ScrOverlay.style.display="none";},3500);}
+function DisplayCacheProgress(){setTimeout(function(){cacheUPDtxt.innerHTML="Cache Installed Successfully<br>Now Close and Reopen Your Browser";},1000);}
 window.applicationCache.addEventListener("progress",DLProgress,false);
 window.applicationCache.oncached=function(e){DisplayCacheProgress();};
-window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};}
-
-function load_jb(){
+window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};}else
+{
 document.write('<script src="exploit.js"><\/scr' + 'ipt><script src="helpers.js"><\/scr' + 'ipt><script src="malloc.js"><\/scr' + 'ipt><script src="rop.js"><\/scr' + 'ipt><script src="syscalls.js"><\/scr' + 'ipt><script src="jailbreak.js"><\/scr' + 'ipt><script>check_jb_finished();<\/scr' + 'ipt>');
 }
 </script>
