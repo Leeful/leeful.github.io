@@ -26,10 +26,12 @@ function check_jb_finished() {
 </head>
 <body>
 <h1 style='color:black;font-size:25px;font-family:sans-serif;text-align:center;'>6.72 Exploit + Mira.elf</h1>
-<div style='color:black;font-size:25px;font-family:sans-serif;text-align:center;' onclick="load_jb();">
-<br><br><br><br><br>Click To Begin
+<br><br><br>
+<div id=ScrOverlay style='text-align:center; font-size:25px'><pre id=cacheUPDtxt class=cacheUPD></pre><div id=CacheProgress></div></div>
+<div style='text-align:center;' onclick="load_jb();">
+<br><br><br><br><br><a href="#">Click To Begin</a>
 </div>
-<div id=ScrOverlay class=cacheUPDbg><pre id=cacheUPDtxt class=cacheUPD></pre><div style='text-align:center' id=CacheProgress></div></div>
+
 
 <script>
 if (window.applicationCache.status == '0') {function DLProgress(e){ScrOverlay.style.display="block";
