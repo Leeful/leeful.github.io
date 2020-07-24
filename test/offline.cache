@@ -1,0 +1,13 @@
+CACHE MANIFEST 
+# 6.72 Host Menu 
+# 24/07/2020- 2:49:03.89 
+
+index.html
+exploit.js
+helpers.js
+malloc.js
+rop.js
+syscalls.js
+jailbreak.js
+Mira.elf
+payload-loader.js
