@@ -1,6 +1,6 @@
 CACHE MANIFEST 
 # v1.0 
-# 28/07/2020-21:06:57.44 
+# 28/07/2020-20:01:57.44 
 
 index.html
 exp_common.js
@@ -15,4 +15,6 @@ pl_app2usb.js
 pl_dumper.js
 pl_ftp.js
 pl_linux.js
+pl_dbBackup.js
+pl_dbRestore.js
 pl_mira_unofficial.js

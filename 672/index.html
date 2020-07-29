@@ -1,6 +1,6 @@
 <html manifest="cache.manifest">
 <head>
-<title>6.72 Exploit Menu By Leeful</title>
+<title>6.72 Exploit Menu By Leeful v1 Beta Test</title>
 <script>
 function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));window.msgs.innerHTML="Installing Offline Cache: " + Percent + "%";}
 function DisplayCacheProgress(){setTimeout(function(){window.msgs.innerHTML="Cache Installed Successfully";},1000);setTimeout(function(){window.msgs.innerHTML="6.72 Exploit Host Menu";},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
@@ -29,19 +29,21 @@ function DisplayCacheProgress(){setTimeout(function(){window.msgs.innerHTML="Cac
 <button onclick="load_historyblock(); return false"> History Blocker </button>
 <button onclick="load_updatesdisable(); return false"> Disable Updates </button>
 <button onclick="load_updatesenable(); return false"> Enable Updates </button>
+<button onclick="load_dbBackup(); return false"> DB Backup </button>
+<button onclick="load_dbRestore(); return false"> DB Restore </button>
 <button onclick="load_mira_unofficial(); return false"> Load Mira (Unofficial)</button>
 <br>
 </div>
 <script>
 function load_exploit(){
 msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exploit ...</h1>";
-var script = document.createElement('script'); script.src = "exp_jailbreak.js";document.getElementsByTagName('head')[0].appendChild(script);
+setTimeout(jailbreak,500);
 }
 
 function load_exploit_mira(){
 msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exploit + Mira ...</h1>";
 LoadedMSG="Exploit + Mira Loaded ✔";ExploitMira="yes";
-var script = document.createElement('script'); script.src = "exp_jailbreak.js";document.getElementsByTagName('head')[0].appendChild(script);
+setTimeout(jailbreak,500);
 }
 
 function load_binloader(){
@@ -117,6 +119,20 @@ function load_updatesenable(){
 msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Enable Updates ...</h1>";
 LoadedMSG="Enable Updates Loaded ✔";
 var script = document.createElement('script');script.src = "pl_updatesEnable.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_dbBackup(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading DB Backup ...</h1>";
+LoadedMSG="DB Backup Loaded ✔";
+var script = document.createElement('script');script.src = "pl_dbBackup.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_dbRestore(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading DB Restore ...</h1>";
+LoadedMSG="DB Restore Loaded ✔";
+var script = document.createElement('script');script.src = "pl_dbRestore.js";document.getElementsByTagName('head')[0].appendChild(script);
 var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
 }
 </script>
