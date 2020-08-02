@@ -1,6 +1,6 @@
 CACHE MANIFEST 
-# v1.0 
-# 30/07/2020-00:38:57.44 
+# v2.0 
+# 02/08/2020-18:00:57.44 
 
 index.html
 exp_common.js
@@ -18,3 +18,5 @@ pl_linux.js
 pl_dbBackup.js
 pl_dbRestore.js
 pl_mira_unofficial.js
+pl_ToDEX.js
+pl_WebRTE.js
