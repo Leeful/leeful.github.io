@@ -18,6 +18,8 @@ function DisplayCacheProgress(){setTimeout(function(){window.msgs.innerHTML="Cac
 <button onclick="load_mira_unofficial(); return false"> Load Mira (Unofficial)</button>
 <br><br>
 <button onclick="load_exploit_mira(); return false"> Load Exploit + Mira Together </button>
+<br><br>
+<button onclick="load_exploit_miraUnoff(); return false"> Load Exploit + Mira (Unofficial) Together </button>
 <br><br><br>
 <h1 style='font-size:15px;text-align:center;'>PAYLOADS</h1>
 <button onclick="load_binloader(); return false"> Bin Loader </button>
@@ -26,7 +28,9 @@ function DisplayCacheProgress(){setTimeout(function(){window.msgs.innerHTML="Cac
 <button onclick="load_linux(); return false"> Linux </button>
 <button onclick="load_app2usb(); return false"> AppToUSB </button>
 <button onclick="load_kerneldump(); return false"> Kernel Dumper </button>
+<button onclick="load_webrte(); return false"> WebRTE </button>
 <br><br>
+<button onclick="load_todex(); return false"> ToDEX </button>
 <button onclick="load_historyblock(); return false"> History Blocker </button>
 <button onclick="load_updatesdisable(); return false"> Disable Updates </button>
 <button onclick="load_updatesenable(); return false"> Enable Updates </button>
@@ -42,7 +46,13 @@ setTimeout(jailbreak,500);
 
 function load_exploit_mira(){
 msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exploit + Mira ...</h1>";
-LoadedMSG="Exploit + Mira Loaded ✔";ExploitMira="yes";
+LoadedMSG="Exploit + Mira Loaded ✔";ExploitMira="yes";MiraSRC="pl_mira.js";
+setTimeout(jailbreak,500);
+}
+
+function load_exploit_miraUnoff(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exploit + Mira (Unofficial)...</h1>";
+LoadedMSG="Exploit + Mira Loaded ✔";ExploitMira="yes";MiraSRC="pl_mira_unofficial.js";
 setTimeout(jailbreak,500);
 }
 
@@ -98,6 +108,20 @@ function load_kerneldump(){
 msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Kernel Dumper ...</h1>";
 LoadedMSG="Kernel Dumper Loaded ✔";
 var script = document.createElement('script');script.src = "pl_kernelDumper.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_webrte(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading WebRTE ...</h1>";
+LoadedMSG="WebRTE Loaded ✔";
+var script = document.createElement('script');script.src = "pl_WebRTE.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_todex(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading ToDEX ...</h1>";
+LoadedMSG="ToDEX Loaded ✔";
+var script = document.createElement('script');script.src = "pl_ToDEX.js";document.getElementsByTagName('head')[0].appendChild(script);
 var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
 }
 
