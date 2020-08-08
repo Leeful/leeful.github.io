@@ -17,6 +17,8 @@ function DisplayCacheProgress(){setTimeout(function(){window.msgs.innerHTML="Cac
 <button onclick="load_mira(); return false"> Load Mira </button>
 <button onclick="load_mira_unofficial(); return false"> Load Mira (Unofficial)</button>
 <br><br>
+<button onclick="load_exploit_HEN(); return false"> Load Exploit + HEN </button>
+<br><br>
 <button onclick="load_exploit_mira(); return false"> Load Exploit + Mira Together </button>
 <br><br>
 <button onclick="load_exploit_miraUnoff(); return false"> Load Exploit + Mira (Unofficial) Together </button>
@@ -65,6 +67,12 @@ setTimeout(jailbreak,500);
 function load_exploit_miraUnoff(){
 msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exploit + Mira (Unofficial)...</h1>";
 LoadedMSG="Exploit + Mira Loaded ✔";ExploitMira="yes";MiraSRC="pl_mira_unofficial.js";
+setTimeout(jailbreak,500);
+}
+
+function load_exploit_HEN(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exploit + HEN...</h1>";
+LoadedMSG="Exploit + HEN Loaded ✔";ExploitMira="HEN";MiraSRC="pl_HEN.js";
 setTimeout(jailbreak,500);
 }
 
