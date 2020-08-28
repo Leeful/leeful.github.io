@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+<head style="background-color:#050505;">
+<title>NEW 6.72 Exploit TEST - Leeful</title>
+<style>
+.info{text-align:center;overflow:hidden;position:fixed;position:absolute;top:30%;left:50%;color:white;font-size:35px;font-family:sans-serif;transform:translate(-50%,-50%);}
+</style>
+<script>
+function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));window.msgs.innerHTML="Installing Offline Cache: " + Percent + "%";}
+function DisplayCacheProgress(){setTimeout(function(){window.msgs.innerHTML="Cache Installed Successfully";},1000);setTimeout(function(){window.msgs.innerHTML="6.72 Test";},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+</script>
+</head>
+<body style="margin:0;background-color:#050505;">
+<script>
+function awaitpl(){
+document.getElementById("success").style.display = "none";
+document.getElementById("awaiting").style.display = "block";
+}
+</script>
+<h1 id=msgs style='color:white;font-size:25px;text-align:center;'>6.72 Test</h1>
+<div id="success" class="info" style="display:block;">
+Explot Loaded Successfully!<br>Now Loading Mira
+</div>
+<div id="awaiting" class="info" style="display:none;">
+Send Payload To Port 9020
+</div>
+<script>
+if (sessionStorage.iskernelpatched==null){
+sessionStorage.iskernelpatched = "yes";
+document.write('<script src="exploit.js"><\/scr' + 'ipt>');
+}
+else {
+document.write('<script src="exp_common.js"><\/scr' + 'ipt><script src="pl_miraNEW.js"><\/scr' + 'ipt><script src="exp_loader.js"><\/scr' + 'ipt>');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<html manifest="cache.manifest">
+<head>
+<title>6.72 Exploit Menu By Leeful v5 Beta Test</title>
+<script>
+function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));window.msgs.innerHTML="Installing Offline Cache: " + Percent + "%";}
+function DisplayCacheProgress(){setTimeout(function(){window.msgs.innerHTML="Cache Installed Successfully";},1000);setTimeout(function(){window.msgs.innerHTML="Now Close And Re-Open Your Browser";},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+</script>
+<script src="exp_common.js"></script>
+<script src="exp_jailbreak.js"></script>
+</head>
+<body style="background-color:#3462a8;color:white;">
+<h1 id=msgs style='font-size:25px;text-align:center;'>6.72 Exploit Menu</h1>
+<hr><br>
+<h1 style='font-size:18px;text-align:center;'>LOAD JAILBREAK</h1>
+<div style="text-align:center">
+<button onclick="load_exploit(); return false"> Load Exploit </button> >> 
+<button onclick="load_HEN(); return false"> Load HEN </button> or 
+<button onclick="load_mira(); return false"> Load Mira </button> or 
+<button onclick="load_mira_unofficial(); return false"> Load Mira (Unofficial)</button>
+<br><br><br>
+<button onclick="load_exploit_HEN(); return false"> Load Exploit + HEN Together </button>
+<br><br>
+<button onclick="load_exploit_mira(); return false"> Load Exploit + Mira Together </button>
+<br><br>
+<button onclick="load_exploit_miraUnoff(); return false"> Load Exploit + Mira (Unofficial) Together </button>
+<br><br><br>
+<h1 style='font-size:18px;text-align:center;'>PAYLOADS</h1>
+<button onclick="load_binloader(); return false"> Bin Loader </button>
+<button onclick="load_ftp(); return false"> FTP </button>
+<button onclick="load_dumper(); return false"> Dumper </button>
+<button onclick="load_linux(); return false"> Linux </button>
+<button onclick="load_app2usb(); return false"> App2USB </button>
+<button onclick="load_kerneldump(); return false"> Kernel Dumper </button>
+<button onclick="load_webrte(); return false"> WebRTE </button>
+<br><br>
+<button onclick="load_todex(); return false"> ToDEX </button>
+<button onclick="load_historyblock(); return false"> History Blocker </button>
+<button onclick="load_updatesdisable(); return false"> Disable Updates </button>
+<button onclick="load_updatesenable(); return false"> Enable Updates </button>
+<button onclick="load_dbBackup(); return false"> DB Backup </button>
+<button onclick="load_dbRestore(); return false"> DB Restore </button>
+<br><br><br>
+<button onclick="load_fanthresh(); return false"> Set Fan Threshold </button><select id="tempC"></select>&#176;C<br>The PS4's default temp is 79&#176;C
+<script>
+for(var i=40; i<=79; i++){
+    var select = document.getElementById("tempC");
+    var option = document.createElement("OPTION");
+	select.options.add(option);
+	option.text = i;
+	option.value = i;
+}
+tempC.value=60;
+</script>
+<br>
+</div>
+<script>
+function load_exploit(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exploit ...</h1>";
+setTimeout(jailbreak,500);
+}
+
+function load_exploit_HEN(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exploit + HEN ...</h1>";
+LoadedMSG="Exploit + HEN Loaded ✔";ExploitMira="HEN";MiraSRC="pl_HEN.js";
+setTimeout(jailbreak,500);
+}
+
+function load_exploit_mira(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exploit + Mira ...</h1>";
+LoadedMSG="Exploit + Mira Loaded ✔";ExploitMira="yes";MiraSRC="pl_mira.js";
+setTimeout(jailbreak,500);
+}
+
+function load_exploit_miraUnoff(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exploit + Mira (Unofficial) ...</h1>";
+LoadedMSG="Exploit + Mira Loaded ✔";ExploitMira="yes";MiraSRC="pl_mira_unofficial.js";
+setTimeout(jailbreak,500);
+}
+
+function load_binloader(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Bin Loader ...</h1>";
+LoadedMSG="Send Payload To Port 9021";
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_HEN(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading HEN ...</h1>";
+LoadedMSG="HEN Loaded ✔";
+var script = document.createElement('script');script.src = "pl_HEN.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_mira(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Mira ...</h1>";
+LoadedMSG="Mira Loaded ✔";
+var script = document.createElement('script');script.src = "pl_mira.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_mira_unofficial(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Mira ...</h1>";
+LoadedMSG="Mira Loaded ✔";
+var script = document.createElement('script');script.src = "pl_mira_unofficial.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_ftp(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading FTP ...</h1>";
+LoadedMSG="FTP Loaded ✔";
+var script = document.createElement('script');script.src = "pl_ftp.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_dumper(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Dumper ...</h1>";
+LoadedMSG="Dumper Loaded ✔";
+var script = document.createElement('script');script.src = "pl_dumper.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_linux(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Linux ...</h1>";
+LoadedMSG="Linux Loaded ✔";
+var script = document.createElement('script');script.src = "pl_linux.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_app2usb(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading AppToUSB ...</h1>";
+LoadedMSG="AppToUSB Loaded ✔";
+var script = document.createElement('script');script.src = "pl_app2usb.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_kerneldump(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Kernel Dumper ...</h1>";
+LoadedMSG="Kernel Dumper Loaded ✔";
+var script = document.createElement('script');script.src = "pl_kernelDumper.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_webrte(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading WebRTE ...</h1>";
+LoadedMSG="WebRTE Loaded ✔";
+var script = document.createElement('script');script.src = "pl_WebRTE.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_todex(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading ToDEX ...</h1>";
+LoadedMSG="ToDEX Loaded ✔";
+var script = document.createElement('script');script.src = "pl_ToDEX.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_historyblock(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading History Blocker ...</h1>";
+LoadedMSG="History Blocker Loaded ✔";
+var script = document.createElement('script');script.src = "pl_historyBlocker.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_updatesdisable(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Disable Updates ...</h1>";
+LoadedMSG="Disable Updates Loaded ✔";
+var script = document.createElement('script');script.src = "pl_updatesDisable.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_updatesenable(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Enable Updates ...</h1>";
+LoadedMSG="Enable Updates Loaded ✔";
+var script = document.createElement('script');script.src = "pl_updatesEnable.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_dbBackup(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading DB Backup ...</h1>";
+LoadedMSG="DB Backup Loaded ✔";
+var script = document.createElement('script');script.src = "pl_dbBackup.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_dbRestore(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading DB Restore ...</h1>";
+LoadedMSG="DB Restore Loaded ✔";
+var script = document.createElement('script');script.src = "pl_dbRestore.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function load_fanthresh(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Fan Threshold ...</h1>";
+LoadedMSG="Fan Threshold Loaded ✔";fanTemp=tempC.value;//alert(fanTemp);
+var script = document.createElement('script');script.src = "pl_fanthresh.js";document.getElementsByTagName('head')[0].appendChild(script);
+var script = document.createElement('script');script.src = "exp_loader.js";document.getElementsByTagName('head')[0].appendChild(script);
+}
+</script>
+</body>
+</html>
