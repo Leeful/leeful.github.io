@@ -1,0 +1,34 @@
+<html manifest="cache.manifest"><!--  -->
+<head>
+<title>6.72 HEN - Leeful</title>
+<script>
+function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));window.msgs.innerHTML="Installing Offline Cache: " + Percent + "%";}
+function DisplayCacheProgress(){setTimeout(function(){window.msgs.innerHTML="Cache Installed Successfully";},1000);setTimeout(function(){window.msgs.innerHTML="Now Close And Re-Open Your Browser";},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+</script>
+<script src="exp_webkit.js"></script>
+</head>
+<body style="background-color:#3462a8;color:white;">
+<h1 id=msgs style='font-size:25px;text-align:center;'>6.72 Exploit Host</h1>
+<hr><br>
+<h1 style='font-size:18px;text-align:center;'>LOAD JAILBREAK</h1>
+<div style="text-align:center">
+<button onclick="load_exploit_HEN(); return false"> Exploit + HEN v2.1.3b </button>
+<br>
+<div text-align= center>Pass = <span id=passCounter></span>&nbsp;&nbsp;:&nbsp;&nbsp;Fail = <span id=failCounter></span></div>
+<br><br>
+</div>
+<script>
+if (localStorage.passcount == null) localStorage.passcount=0;
+window.passCounter.innerHTML=localStorage.passcount;
+if (localStorage.failcount == null) localStorage.failcount=0;
+window.failCounter.innerHTML=localStorage.failcount;
+
+function load_exploit_HEN(){
+msgs.innerHTML="<h1 style='font-size:25px;text-align:center;'>Loading Exploit And HEN ...</h1>";
+LoadedMSG="Exploit And HEN Loaded ✔ - Press Circle To Exit";
+function getScript(source,callback){var gs=document.createElement('script');gs.src=source;gs.onload=callback;gs.async=false;document.body.appendChild(gs);}
+function loadScript(){getScript("exp_kernelHEN.js",function(){setTimeout(jailbreak,500);});}loadScript();
+}
+</script>
+</body>
+</html>
