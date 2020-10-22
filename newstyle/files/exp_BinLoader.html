@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>6.72 Payload Loader - Leeful</title>
+<link rel="stylesheet prefetch" href="Style-Common.css">
+</head>
+<body onload="load_pl()">
+<div id="loader"><div id=msgs class="txt1">Loading <script>document.write(parent.plTITLE);</script> ...</div>
+<div class="AniGif"><div id=ldbar class=Ani0></div></div>
+<div class="txt2"><script>document.write(parent.fullTITLE);</script></div></div>
+<div id="done" style="display:none"><div class="txt1"><script>document.write(parent.plTITLE);</script> Ready ✔&nbsp;&nbsp;Send Payload To Port 9021</div><div class="container"><div class=AniDone></div></div><div class="txt2"><script>document.write(parent.fullTITLE);</script></div></div>
+<script>
+parent.ldbar = ldbar;
+parent.msgs = msgs;
+parent.loader = loader;
+parent.done = done;
+function load_pl(){
+setTimeout(parent.getBL,1000);
+}
+</script>
+</body>
+</html>

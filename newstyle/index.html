@@ -1,0 +1,18 @@
+<html lang="en">
+<head>
+<title>NewStyle Test - Leeful</title>
+<link rel="stylesheet prefetch" href="files/Style-Common.css">
+<link id="pagestyle" rel="stylesheet" type="text/css" href="files/Style-FL-Blue.css">
+<script>
+if (localStorage.sheetKey == null){localStorage.sheetKey = 'files/Style-FL-Blue.css';}
+var loadbackground = function (){document.getElementById('pagestyle').setAttribute('href', localStorage.getItem('sheetKey'));};
+window.onload = loadbackground();
+</script>
+</head>
+<body>
+<div class="bgIMG"></div>
+<div align="left" style="width:100%; height:10%; margin:0; padding:0;"><div id="text-display" class="PageTop">&nbsp;PS4 6.72 Exploit Menu<hr></div></div>
+<span id=PF>Pass = <span id=passCounter></span>&nbsp;&nbsp;:&nbsp;&nbsp;Fail = <span id=failCounter></span></span>
+<div align="center"><iframe id="iframeId" src="MAIN.html" frameborder="0" style="width:100%; height:89%; margin:0; padding:0;"></iframe></div>
+</body>
+</html>

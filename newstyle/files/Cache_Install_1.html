@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>PS4 6.72 OffLine Cache Installer</title>
+<link rel="stylesheet prefetch" href="Style-Common.css"><link rel="stylesheet prefetch" href="Style-FL-Blue.css" title="FL-Blue"><link rel="alternate stylesheet" href="Style-FL-Gold.css" title="FL-Gold"><link rel="alternate stylesheet" href="Style-FL-Navy.css" title="FL-Navy"><link rel="alternate stylesheet" href="Style-FL-Ruby.css" title="FL-Ruby"><link rel="alternate stylesheet" href="Style-FL-Teal.css" title="FL-Teal"><link rel="alternate stylesheet" href="Style-FL-Purp.css" title="FL-Purp"><link rel="alternate stylesheet" href="Style-FL-Pink.css" title="FL-Pink"><link rel="alternate stylesheet" href="Style-FL-Grey.css" title="FL-Grey"><link rel="alternate stylesheet" href="Style-DU-Aqua.css" title="DU-Aqua"><link rel="alternate stylesheet" href="Style-DU-Grey.css" title="DU-Grey"><link rel="alternate stylesheet" href="Style-DU-Rose.css" title="DU-Rose"><link rel="alternate stylesheet" href="Style-DU-Dark.css" title="DU-Dark"><link rel="alternate stylesheet" href="Style-PA-Blue.css" title="PA-Blue"><link rel="alternate stylesheet" href="Style-PA-Pink.css" title="PA-Pink"><link rel="alternate stylesheet" href="Style-PA-Gold.css" title="PA-Gold"><link rel="alternate stylesheet" href="Style-PA-Dark.css" title="PA-Dark">
+<script>
+function ondownloading(){changeText("Installing offline cache<br>Please wait...");}
+function oncached(){changeText("Offline cache installed successfully <div>Press <div id=PSBUTTON></div> to exit.</div>");}
+function onupdateready(){changeText("Offline cache has been updated <div>Press <div id=PSBUTTON></div> to exit.</div>");}
+function onnoupdate(){changeText("No new updates available <div>Press <div id=PSBUTTON></div> to exit.</div>");}
+function onerror(){changeText("Error caching pages! <div>Press <div id=PSBUTTON></div> to exit.</div>");}
+function changeText(text){var display = document.getElementById('text-display'); display.innerHTML = ""; display.innerHTML = text;}
+</script>
+</head>
+<body>
+<div id="text-display" class="info"></div>
+<iframe style=border:none; src="Cache_Install_2.html"></iframe>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>PS4 Style</title>
+<link rel="stylesheet prefetch" href="files/Style-Common.css">
+<script src="files/exp_exploit.js"></script>
+</head>
+<body>
+<script>
+function clrDefault(){document.getElementById("defaultItem").id = "";document.getElementById("defaultDesc").id = "";}
+if (localStorage.passcount == null) {localStorage.passcount=0;}
+parent.passCounter.innerHTML=localStorage.passcount;
+if (localStorage.failcount == null) {localStorage.failcount=0;}
+parent.failCounter.innerHTML=localStorage.failcount;
+</script>
+<!-- <h1 id=msgs style='font-size:25px;text-align:center;'>6.72 Exploit Menu</h1> -->
+<div class="item" id="MyItems" onclick="ExpWin()">
+
+<a href="#" onclick="MiraUnofficial()">
+<div class="iconZ">&#xe883;</div><div class="Title">Mira (Unofficial)</div>
+<div class="Desc">Mira build for 6.72 By Al Azif</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="MiraNOHB()">
+<div class="iconZ">&#xe883;</div><div class="Title">Mira (No HB)</div>
+<div class="Desc">Alternate Mira build for 6.72 By Al Azif</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="MiraAug9()" onmouseenter="clrDefault()">
+<div class="iconZ">&#xe883;</div><div class="Title">Mira (#106 Aug 2020)</div>
+<div class="Desc">Official Mira build from pull request #106 9th Aug 2020. NOTE! It will look like a kernel panic but wait 20 seconds.</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="Hen()" id=defaultItem>
+<div class="iconZ">&#xe30f;</div><div class="Title">Hen 2.1.3</div>
+<div class="Desc " id=defaultDesc>v2.1.3 By SiSTRo - Enable Homebrew, Enable Debug Settings, External HDD Support.</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="Henb()" onmouseenter="clrDefault()">
+<div class="iconZ">&#xe30f;</div><div class="Title">Hen 2.1.3b</div>
+<div class="Desc ">v2.1.3b By Leeful - Fixes blank trophies, !If you use PSVR, turn it on before running HEN.</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="Binloader()">
+<div class="iconZ">&#xe146;</div><div class="Title">Bin Loader</div>
+<div class="Desc">Loads a .bin file sent to the PS4 IP address on port 9021</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="FTP()">
+<div class="iconZ">&#xe30a;</div><div class="Title">FTP Server</div>
+<div class="Desc">A full access FTP server for the PS4. Connect your FTP client to the IP address and port that the popup message tells you.</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="Dumper()">
+<div class="iconZ">&#xe149;</div><div class="Title">Dumper</div>
+<div class="Desc">v1.8 By xVortex - Dump games to USB drive to create fpkg files. Copy dumper.cfg to root of USB drive</div>
+</a><div class="Divider"></div>	
+
+<a href="#" onclick="Linux()">
+<div class="iconZ">&#xe23e;</div><div class="Title">Linux Loader</div>
+<div class="Desc">Boots a Linux distribution from a USB drive</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="App2USB()">
+<div class="iconZ">&#xe1e0;</div><div class="Title">AppToUSB</div>
+<div class="Desc">v5 By Stooged - Move installed games to an external USB drive. Put app2usb.ini inside the PS4 folder on your USB drive</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="KernelDump()">
+<div class="iconZ">&#xe906;</div><div class="Title">Kernel Dumper</div>
+<div class="Desc">Dump a copy of your kernel to your USB drive.</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="WebRTE()">
+<div class="iconZ">&#xe8f4;</div><div class="Title">WebRTE</div>
+<div class="Desc">Run payload then go to ps4trainer.com/Trainer/index.html</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="PS4Debug()">
+<div class="iconZ">&#xe1b1;</div><div class="Title">PS4Debug</div>
+<div class="Desc">PS4Debug for SaveMounter and Profile Activator.</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="ToDEX()">
+<div class="iconZ">&#xe62c;</div><div class="Title">ToDEX</div>
+<div class="Desc">Unlock DEX features.</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="HistoryBlock()">
+<div class="iconZ">&#xe8df;</div><div class="Title">History Blocker</div>
+<div class="Desc">Disable the auto opening of the last page used in the PS4 WebBrowser. Run the payload again to disable this feature.</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="DisableUpdates()">
+<div class="iconZ">&#xe14b;</div><div class="Title">Disable Updates</div>
+<div class="Desc">Creates dummy files in the PS4 update folder to prevent the download of unwanted system updates. It also deletes any existing updates if they already exist.</div>
+</a><div class="Divider"></div>
+	
+<a href="#" onclick="EnableUpdates()">
+<div class="iconZ">&#xe86c;</div><div class="Title">Enable Updates</div>
+<div class="Desc">Removes the dummy files in the PS4 update folder to enable the download of updates again.</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="DBbackup()">
+<div class="iconZ">&#xe048;</div><div class="Title">Database Backup</div>
+<div class="Desc">Makes a backup of your PS4's database files.</div>
+</a><div class="Divider"></div>
+	
+<a href="#" onclick="DBrestore()">
+<div class="iconZ">&#xe8b3;</div><div class="Title">Database Restore</div>
+<div class="Desc">Restores the backup of your PS4's database files.</div>
+</a><div class="Divider"></div>
+
+<a href="#" onclick="StylePick()">
+<div class="iconZ">&#xe3b7;</div><div class="Title">**Menu Theme Colour Picker</div>
+<div class="Desc">Change the background colour of the exploit host menu. Choose from 16 of the PS4's default theme colours</div>
+</a><div class="Divider"></div>
+	
+<a href="#" onclick="CacheInstall()" style=display:none id=cinst>
+<div class="iconZ">&#xe31a;</div><div class="Title">**Offline Cache Installer</div>
+<div class="Desc">Save all the exploit pages to the PS4s Browser Cache to use the exploits offline</div>
+</a><div class="Divider"></div>
+</div>
+
+<div id="explWIN" class="exploitWIN" style="display:none"></div>
+
+<script>
+function getPLloader(){var script = document.createElement('script');script.src = "files/pl_loader.js";document.getElementsByTagName('head')[0].appendChild(script);}
+function ldExp(){explWIN.innerHTML='<object type="text/html"data="files/exp_loader.html"style="width:100%;height:100%;"></object>'};
+function ldPLD(){explWIN.innerHTML='<object type="text/html"data="files/pl_loader.html"style="width:100%;height:100%;"></object>'};
+function ChangeText(text){var display = window.parent.document.getElementById('text-display');display.innerHTML = "";display.innerHTML = text;}
+if (parent.document.getElementById("iframeId").src.indexOf("MAIN.html") !=-1){ChangeText('&nbsp;PS4 6.72 Exploit Menu<hr>');}
+function ExpWin(){MyItems.style.display="none";explWIN.style.display="block";}
+
+function MiraUnofficial(){plTITLE="Mira(Unofficial)"; fullTITLE="Mira(Unofficial) By Al Azif for FW 6.72"; plSOURCE="files/pl_Mira_Unofficial.js"; ldExp();}
+function MiraNOHB(){plTITLE="Mira(NoHB)"; fullTITLE="Mira(NoHB) By Al Azif for FW 6.72"; plSOURCE="files/pl_Mira_NoHB.js"; ldExp();}
+function MiraAug9(){plTITLE="Mira(Aug 2020)"; fullTITLE="Mira(Aug 9) By Open Orbis for FW 6.72"; plSOURCE="files/pl_Mira_Aug9.js"; ldExp();}
+function Hen(){plTITLE="HEN"; fullTITLE="HEN v2.1.3 By SiSTRo for FW 6.72"; plSOURCE="files/pl_Hen.js"; ldExp();}
+function Henb(){plTITLE="HEN"; fullTITLE="HEN v2.1.3b By Leeful for FW 6.72"; plSOURCE="files/pl_Henb.js"; ldExp();}
+
+function ldBL(){explWIN.innerHTML='<object type="text/html"data="files/exp_BinLoader.html"style="width:100%;height:100%;"></object>'};
+function getPLBL(){var script = document.createElement('script');script.src = "files/exp_BinLoader.js";document.getElementsByTagName('head')[0].appendChild(script);}
+function Binloader(){plTITLE="Bin Loader"; fullTITLE="Bin Loader v1.0 By Open Orbis for FW 6.72";getPLBL();ldBL();}
+
+
+function FTP(){plTITLE="FTP Server"; fullTITLE="FTP Server v1.3 By xVortex for FW 6.72"; plSOURCE="files/pl_FTP.js";getPLloader();ldPLD();}
+function Dumper(){plTITLE="Game Dumper"; fullTITLE="Game Dumper v1.8 By xVortex for FW 6.72"; plSOURCE="files/pl_Dumper.js";getPLloader();ldPLD();}
+function Linux(){plTITLE="Linux Loader"; fullTITLE="Linux Loader v1.0 By mircoho for FW 6.72"; plSOURCE="files/pl_linux.js";getPLloader();ldPLD();}
+function App2USB(){plTITLE="App2USB"; fullTITLE="App2USB v5 By Stooged for FW 6.72"; plSOURCE="files/pl_app2usb.js";getPLloader();ldPLD();}
+function KernelDump(){plTITLE="Kernel Dumper"; fullTITLE="Kernel Dumper v1.0 By Al Azif for FW 6.72"; plSOURCE="files/pl_kernelDumper.js";getPLloader();ldPLD();}
+function WebRTE(){plTITLE="WebRTE"; fullTITLE="WebRTE v1.0 By PS4 Trainer for FW 6.72"; plSOURCE="files/pl_WebRTE.js";getPLloader();ldPLD();}
+function PS4Debug(){plTITLE="PS4Debug"; fullTITLE="PS4Debug v1.2.1 By GiantPluto for FW 6.72"; plSOURCE="files/pl_ps4debug.js";getPLloader();ldPLD();}
+function ToDEX(){plTITLE="ToDEX"; fullTITLE="ToDEX v1.0 By notzecoxao for FW 6.72"; plSOURCE="files/pl_ToDEX.js";getPLloader();ldPLD();}
+function HistoryBlock(){plTITLE="History Blocker"; fullTITLE="History Blocker v1.0 By Stooged for FW 6.72"; plSOURCE="files/pl_historyBlocker.js";getPLloader();ldPLD();}
+function DisableUpdates(){plTITLE="Disable Updates"; fullTITLE="Disable Updates v1.0 By Al Azif for FW 6.72"; plSOURCE="files/pl_updatesDisable.js";getPLloader();ldPLD();}
+function EnableUpdates(){plTITLE="Enable Updates"; fullTITLE="Enable Updates v1.0 By Al Azif for FW 6.72"; plSOURCE="files/pl_updatesEnable.js";getPLloader();ldPLD();}
+function DBbackup(){plTITLE="Database Backup"; fullTITLE="Database Backup v1.0 By Al Azif for FW 6.72"; plSOURCE="files/pl_dbBackup.js";getPLloader();ldPLD();}
+function DBrestore(){plTITLE="Database Restore"; fullTITLE="Database Restore v1.0 By Al Azif for FW 6.72"; plSOURCE="files/pl_dbRestore.js";getPLloader();ldPLD();}
+
+function StylePick(){explWIN.innerHTML='<object type="text/html"data="files/Style-Picker.html"style="width:100%;height:100%;"></object>';ChangeText('&nbsp;Theme Colour Picker<hr>');}
+function CacheInstall(){explWIN.innerHTML='<object type="text/html"data="files/Cache_Install_1.html"style="width:100%;height:100%;"></object>';}
+
+if (window.applicationCache.status=='0'){cinst.click();}
+</script>
+</body>
+</html>

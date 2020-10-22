@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>6.72 Exploit Loader - Leeful</title>
+<link rel="stylesheet prefetch" href="Style-Common.css">
+</head>
+<body onload="load_exploit()">
+<div id="loader"><div id=msgs class="txt1">Loading Exploit ...</div>
+<div class="AniGif"><div id=ldbar class=Ani1></div></div>
+<div class="txt2"><script>document.write(parent.fullTITLE);</script></div></div>
+<div id="done" style="display:none"><div class="txt1"><script>document.write(parent.plTITLE);</script> Loaded ✔ &nbsp;&nbsp;Press Circle button to exit.</div><div class="container"><div class=AniDone></div></div><div class="txt2"><script>document.write(parent.fullTITLE);</script></div></div>
+<div id="fail" style="display:none" class="txt1">Exploit failed !<br>Reboot and try again</div>
+<script>
+parent.ldbar = ldbar;
+parent.msgs = msgs;
+parent.loader = loader;
+parent.done = done;
+parent.fail = fail;
+function load_exploit(){
+setTimeout(parent.jailbreak,500);
+}
+</script>
+</body>
+</html>
