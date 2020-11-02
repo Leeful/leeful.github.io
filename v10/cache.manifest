@@ -1,0 +1,36 @@
+CACHE MANIFEST 
+# v10.0 
+# 31/10/2020-01:55:57 
+
+index.html
+exp_loaderBL.js
+exp_loaderPL.js
+pl_App2usb.bin
+pl_AvatarBackup.bin
+pl_AvatarRestore.bin
+pl_DBbackup.bin
+pl_DBrestore.bin
+pl_DumperGU.bin
+pl_DumperG.bin
+pl_DumperU.bin
+pl_DumperM.bin
+pl_FanThresh.js
+pl_FTP.bin
+pl_FWspoof.js
+pl_GTA_ArabicGuy100.bin
+pl_GTA_ArabicGuy127.bin
+pl_GTA_ArabicGuy132.bin
+pl_GTA_Lamance132.bin
+pl_HEN.bin
+pl_HENb.bin
+pl_HistoryBlocker.bin
+pl_KernelDumper.bin
+pl_Linux.bin
+pl_Linux2.bin
+pl_PS4debug.bin
+pl_ToDEV.bin
+pl_ToDEX.bin
+pl_ToKratos.bin
+pl_UpdatesDisable.bin
+pl_UpdatesEnable.bin
+pl_WebRTE.bin
