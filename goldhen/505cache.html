@@ -1,0 +1,12 @@
+<html manifest="505cache.manifest">
+<head>
+<script>
+function CacheProgress(e){Percent=(Math.round(e.loaded / e.total * 100));parent.msgs.innerHTML="Installing Offline Cache: " + Percent + "%";}
+function CachingDone(){setTimeout(function(){parent.msgs.innerHTML="Cache Installed Successfully. Re-Open Your Browser To Contine.";},2000);}
+function UpdateDone(){setTimeout(function(){parent.msgs.innerHTML="Cache Updated Successfully. Re-Open Your Browser To Contine.";},2000);}
+window.applicationCache.addEventListener("progress",CacheProgress,false);window.applicationCache.addEventListener('updateready', UpdateDone,false);window.applicationCache.oncached=function(e){CachingDone();};
+</script>
+</head>
+<body>
+</body>
+</html>
