@@ -2,8 +2,8 @@
 <head>
 <script>
 function CacheProgress(e){Percent=(Math.round(e.loaded / e.total * 100));parent.msgs.innerHTML="Installing Offline Cache: " + Percent + "%";}
-function CachingDone(){setTimeout(function(){parent.msgs.innerHTML="Cache Installed Successfully. Re-Open Your Browser To Contine.";},2000);}
-function UpdateDone(){setTimeout(function(){parent.msgs.innerHTML="Cache Updated Successfully. Re-Open Your Browser To Contine.";},2000);}
+function CachingDone(){setTimeout(function(){parent.msgs.innerHTML="Cache Installed Successfully";},2000);setTimeout(function(){parent.msgs.innerHTML="Re-Open Your Browser To Continue";},4000);}
+function UpdateDone(){setTimeout(function(){parent.msgs.innerHTML="Cache Updated Successfully";},2000);setTimeout(function(){parent.msgs.innerHTML="Re-Open Your Browser To Continue";},4000);}
 window.applicationCache.addEventListener("progress",CacheProgress,false);window.applicationCache.addEventListener('updateready', UpdateDone,false);window.applicationCache.oncached=function(e){CachingDone();};
 </script>
 </head>
