@@ -1,6 +1,6 @@
 CACHE MANIFEST 
 # Leeful 
-# 27/11/2021-19:27:00.78 
+# 15/12/2021-14:27:00.78 
 
 index.html
 cache.html
@@ -9,11 +9,3 @@ kexploit.js
 rop.js
 webkit.js
 goldhen.bin
-
-NETWORK:
-*
-
-SETTINGS:
-prefer-online:
-
-# Date: 27/11/2021 19:27:00.95
