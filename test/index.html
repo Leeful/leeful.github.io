@@ -10,9 +10,8 @@ color:white;font-size:28px;text-align:center;margin:0;overflow:hidden;}
 <body>
 <div id="msgs" class="info">Running Webkit Exploit, Please Wait ...</div>
 <script>
-let device = USBConnectionEvent.device;
 navigator.usb.addEventListener('connect', event => {
-  alert(event.device);
+  alert("USB");
 });
 </script>
 </body>
