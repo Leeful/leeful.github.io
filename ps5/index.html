@@ -17,10 +17,11 @@ a{color:white;}
 <body style="margin:0px;padding:0px;overflow:auto;">
 <div id=BOX1 class=BOX style="margin:0px 5px 0px 0px;">
 <input id="search-input" type="text" value="http://">
-<button id=infobutz class=leeful onclick='goToURL();'> GO ></button>
+
 </div>	
 
 <div id=BOX2 class=BOX style="margin:0px 0px 0px 5px;">
+<button id=infobutz class=leeful onclick='goToURL();'> GO ></button>
 <div id=showbutz>
 <button class="leeful smaller" id=Sall onclick="clearHistory()">Clear History</button><br>
 <button class="leeful smaller" id=Snew onclick="clearFavorites()">Clear Favorites</button>
@@ -65,7 +66,7 @@ function clearFavorites(){
 }
 
 function addHist() {
- localStorage.history+="<a href='"+x.value+"' target='_self'>"+x.value+" </a><button onclick='url=this.previousElementSibling.innerHTML;addFav()'>ADD</button><br>";
+ localStorage.history+="<a href='"+x.value+"' target='_self'>"+x.value+" </a><button title='Add To Favorites' onclick='url=this.previousElementSibling.innerHTML;addFav()'>ADD</button><br>";
 }
 
 function addFav(){
