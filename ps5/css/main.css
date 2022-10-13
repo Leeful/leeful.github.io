@@ -43,27 +43,24 @@ font-size:20px;
 }
 #BOX1{
 top:0px;
-width:1393px;
+width:1334px;
 height:64px;
 background-color:black;
 float:left;
 text-align:left;
 border-radius:16px;
-border-bottom-left-radius:16px;
-border
-margin:0px 5px 0px 0px; 
+margin:0px -5px 0px 0px; 
 }
 #BOX2{
 top:0px;
-width:131px;
+width:190px;
 height:64px;
 /* float:right; */
-background-color:black;
+background-color:transparent;
 display:inline-block;
-padding:12px 15px 8px 4px;
-border-radius:16px;
-border-bottom-right-radius:16px;
-margin:0px 0px 0px 5px;
+padding:12px 0px 11px 0px;
+border:none;
+margin:0px 0px 0px 0px;
 text-align:right;
 }
 #search-input{
@@ -85,11 +82,11 @@ outline:none;
 width:1273px;
 }
 #Sall, #Snew{
-margin:7px 0px 5px 5px;
+margin:7px 0px 5px 2px;
 }
 button{
 position:relative;
-margin:7px 5px 5px 5px;
+margin:7px 0px 5px 5px;
 padding:0px 7px 2px 7px;
 font-size:16px;
 background:#1D2025;
@@ -110,11 +107,11 @@ outline: none;
 cursor:pointer;
 }
 .smaller{
-height:20px;
+height:29px;
 line-height:14px;
 font-size:14px;
 padding:0px 6px 3px 6px;
-border-radius:6px;border:1px solid #DEDEDC;
+border-radius:10px;border:2px solid #DEDEDC;
 }
 #favsid{
 /* background-color:yellow; */
@@ -135,14 +132,15 @@ display:inline-block;
 
 }
 #infobutz{
-position:relative;
-margin:5px 4px 0 0;
-height:50px;
+margin:5px 0px 0 0;
+height:63px;
+top:-40px;
 /* width: 100px; */
-float:right;
+background-color:black;
 display:inline-block;
 font-size:19px;
 font-weight:bolder;
+border-radius:10px;border:2px solid #DEDEDC;
 }
 #showbutz{
 position:relative;
@@ -150,14 +148,16 @@ display:inline-block;
 margin:0px 0px 0px 0px;
 }
 #Sall{
-position:relative;
-top:-11px;
-width:110px;
-}
-#Snew{
+background-color:black;
 position:relative;
 top:-18px;
-width:110px;
+width:120px;
+}
+#Snew{
+background-color:black;
+position:relative;
+top:-25px;
+width:120px;
 }
 ::-webkit-scrollbar{
 width:3px;
