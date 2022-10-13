@@ -39,8 +39,11 @@ a{color:white;}
 <script>
 url="";
 x=document.getElementById("search-input");
-if(localStorage.history==null){localStorage.history=""}
-if(localStorage.fav==null){localStorage.fav="<a href='http://prb123.ir/ps5' target='_self'>http://prb123.ir/ps5</a><br>"}
+if(localStorage.history==null){localStorage.history=""};
+if(localStorage.fav==null){
+localStorage.fav="<a href='https://leeful.github.io/ps5/v1' target='_self'>https://leeful.github.io/ps5/v1</a><br>";
+localStorage.fav+="<a href='http://prb123.ir/ps5' target='_self'>http://prb123.ir/ps5</a><br>";
+}
  
  function goToURL(){
  addHist()
