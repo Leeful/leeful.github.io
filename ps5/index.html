@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>PS5 Browser v1.0 - By Leeful</title>
+<link rel="stylesheet" href="css/main.css">
+<style>
+html {
+min-height: 100%;
+}
+body {
+background-color:#1D2025;
+margin:0px;
+a{color:white;}
+}
+</style>
+</head>
+<body style="margin:0px;padding:0px;overflow:auto;">
+<div id=BOX1 class=BOX style="margin:0px 5px 0px 0px;">
+<input id="search-input" type="text" value="http://">
+<button id=infobutz class=leeful onclick='goToURL();'> GO ></button>
+</div>	
+
+<div id=BOX2 class=BOX style="margin:0px 0px 0px 5px;">
+<div id=showbutz>
+<button class="leeful smaller" id=Sall onclick="clearHistory()">Clear History</button><br>
+<button class="leeful smaller" id=Snew onclick="clearFavorites()">Clear Favorites</button>
+</div>
+</div>
+
+<div id=favsid>
+<h3>Favorites:</h3>
+<div id=favs></div>
+</div>
+
+<div id=histid>
+<h3>History:</h3>
+<div id=hist></div>
+</div>
+<script>
+url="";
+x=document.getElementById("search-input");
+if(localStorage.history==null){localStorage.history=""}
+if(localStorage.fav==null){localStorage.fav="<a href='http://prb123.ir/ps5' target='_self'>http://prb123.ir/ps5</a><br>"}
+ 
+ function goToURL(){
+ addHist()
+ window.location.href = x.value;
+ }
+ 
+function clearHistory(){
+ if (confirm('Are you sure you want to delete your history?')) {
+  localStorage.history="";
+  hist.innerHTML=localStorage.history;
+ } else {return}
+}
+ 
+function clearFavorites(){
+ if (confirm('Are you sure you want to delete your favorites?')) {
+  localStorage.fav="";
+  favs.innerHTML=localStorage.fav;
+ } else {return}
+}
+
+function addHist() {
+ localStorage.history+="<a href='"+x.value+"' target='_self'>"+x.value+" </a><button onclick='url=this.previousElementSibling.innerHTML;addFav()'>ADD</button><br>";
+}
+
+function addFav(){
+ alert(url+"\nAdded To Favorites");
+ localStorage.fav+="<a href='"+url+"' target='_self'>"+url+"</a><br>";
+ favs.innerHTML=localStorage.fav;
+}
+
+hist.innerHTML=localStorage.history;
+favs.innerHTML=localStorage.fav;
+</script>
+</body>
+</html>
