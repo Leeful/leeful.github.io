@@ -1,23 +1,17 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<title>PS5 Browser v1.0 - By Leeful</title>
+<title>PS5 Browser v1.1 - By Leeful</title>
 <link rel="stylesheet" href="css/main.css">
 <style>
-html {
-min-height: 100%;
-}
-body {
-background-color:#1D2025;
-margin:0px;
+html{min-height: 100%;}
+body{background-color:#1D2025;margin:0px;}
 a{color:white;}
-}
 </style>
 </head>
 <body style="margin:0px;padding:0px;overflow:auto;">
 <div id=BOX1 class=BOX style="margin:0px 5px 0px 0px;">
 <input id="search-input" type="text" value="http://">
-
 </div>	
 
 <div id=BOX2 class=BOX style="margin:0px 0px 0px 5px;">
@@ -42,8 +36,8 @@ url="";
 x=document.getElementById("search-input");
 if(localStorage.history==null){localStorage.history=""};
 if(localStorage.fav==null){
-localStorage.fav="<a href='https://leeful.github.io/ps5/v1' target='_self'>https://leeful.github.io/ps5/v1</a><br>";
-localStorage.fav+="<a href='http://prb123.ir/ps5' target='_self'>http://prb123.ir/ps5</a><br>";
+localStorage.fav="<a href='https://leeful.github.io/ps5/v1' target='_self'>https://leeful.github.io/ps5/v1</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>DELETE</button><br>";
+localStorage.fav+="<a href='http://prb123.ir/ps5' target='_self'>http://prb123.ir/ps5</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>DELETE</button><br>";
 }
  
  function goToURL(){
@@ -66,13 +60,26 @@ function clearFavorites(){
 }
 
 function addHist() {
- localStorage.history+="<a href='"+x.value+"' target='_self'>"+x.value+" </a><button title='Add To Favorites' onclick='url=this.previousElementSibling.innerHTML;addFav()'>ADD</button><br>";
+ a = localStorage.history;
+ b = "<a href='"+x.value+"' target='_self'>"+x.value+" </a><button onclick='url=this.previousElementSibling.innerHTML;addFav()'>ADD</button><br>";
+ localStorage.history = b+a;
 }
 
 function addFav(){
+ a = localStorage.fav;
+ b = "<a href='"+url+"' target='_self'>"+url+"</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>DELETE</button><br>";
  alert(url+"\nAdded To Favorites");
- localStorage.fav+="<a href='"+url+"' target='_self'>"+url+"</a><br>";
+ localStorage.fav = b+a;
  favs.innerHTML=localStorage.fav;
+}
+
+function remFav(){
+ if (confirm('Are you sure you want to delete this favorite?')) {
+  favlistBefore = localStorage.fav;
+  removefav = "<a href='"+url+"' target='_self'>"+url+"</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>DELETE</button><br>";
+  localStorage.fav = favlistBefore.replace(removefav, "");
+  favs.innerHTML=localStorage.fav;
+ } else {return}
 }
 
 hist.innerHTML=localStorage.history;
