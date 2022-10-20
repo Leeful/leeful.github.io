@@ -1,49 +1,53 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<title>PS5 Browser v1.1 - By Leeful</title>
+<title>PS5 Browser v1.2 - By Leeful</title>
 <link rel="stylesheet" href="css/main.css">
-<style>
-html{min-height: 100%;}
-body{background-color:#1D2025;margin:0px;}
-a{color:white;}
-</style>
 </head>
-<body style="margin:0px;padding:0px;overflow:auto;">
-<div id=BOX1 class=BOX style="margin:0px 5px 0px 0px;">
-<input id="search-input" type="text" value="http://">
-</div>	
-
-<div id=BOX2 class=BOX style="margin:0px 0px 0px 5px;">
-<button id=infobutz class=leeful onclick='goToURL();'> GO ></button>
-<div id=showbutz>
-<button class="leeful smaller" id=Sall onclick="clearHistory()">Clear History</button><br>
-<button class="leeful smaller" id=Snew onclick="clearFavorites()">Clear Favorites</button>
+<body>
+<div id=BOX1>
+<input id="search-input" type="url" value="http://">
 </div>
+
+<div id=BOX2>
+<button id=gobut class=leeful onclick='goToURL();'> GO ></button>
+</div>
+
+<div id=BOX3>
+<button class="leeful smaller" id=clrHis onclick="clearHistory()">Clear History</button><br>
+<button class="leeful smaller" id=clrFav onclick="clearFavorites()">Clear Favorites</button>
 </div>
 
 <div id=favsid>
-<h3>Favorites:</h3>
+<h1>Favorites:</h1>
 <div id=favs></div>
 </div>
 
 <div id=histid>
-<h3>History:</h3>
+<h1>History:</h1>
 <div id=hist></div>
 </div>
 <script>
 url="";
 x=document.getElementById("search-input");
-if(localStorage.history==null){localStorage.history=""};
+
+if(!navigator.userAgent.includes('PlayStation 5')) {
+ alert("This Page Will Only Display Correctly On A PS5 Console!");
+}
+
+if(localStorage.history==null){
+ localStorage.history=""
+};
+
 if(localStorage.fav==null){
-localStorage.fav="<a href='https://leeful.github.io/ps5/v1' target='_self'>https://leeful.github.io/ps5/v1</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>DELETE</button><br>";
+localStorage.fav="<a href='https://leeful.github.io/ps5/v2' target='_self'>https://leeful.github.io/ps5/v2</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>DELETE</button><br>";
 localStorage.fav+="<a href='http://prb123.ir/ps5' target='_self'>http://prb123.ir/ps5</a><button onclick='url=this.previousElementSibling.innerHTML;remFav()'>DELETE</button><br>";
 }
  
- function goToURL(){
+function goToURL(){
  addHist()
  window.location.href = x.value;
- }
+}
  
 function clearHistory(){
  if (confirm('Are you sure you want to delete your history?')) {

@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>PS5 Exploit v1.02 - Leeful [16th Oct 2022 CC WIP Commit Update]</title>
+<style>
+body{
+background-color:#1C1F25;
+color: white;
+}
+.log {color: white;
+background-color:#1D2025;
+display: block;
+unicode-bidi: embed;
+font-family: monospace;
+white-space: pre;
+font-size: 18px;
+width: 100%;
+height: 92%;
+margin-bottom:8px;
+border-radius: 10px;
+}
+</style>
+<script>
+function allset(){};
+</script>
+<script defer src="int64.js"></script>
+<script defer src="rop.js"></script>
+<script defer src="exploit.js"></script>
+</head>
+<body onload="setTimeout(poc, 1500);">
+<textarea id="console" class="log"></textarea>
+<center>
+<b>Credits: </b> theflow0, SpecterDev, ChendoChap, Znullptr, sleirsgoevy, psxdev, flat_z, notzecoxao, SocraticBliss, laureeeeeee
+<br>
+<b>Supported Firmware Versions: </b> 3.00, 3.20, 3.21, 4.02, 4.03, 4.50, 4.51 - <b> Unsupported Firmware Versions: </b> 3.10, 4.00
+</center>
+<script>
+document.getElementById("console").innerHTML="[+] Running webkit exploit...\n";
+</script>
+</body>
+</html>
