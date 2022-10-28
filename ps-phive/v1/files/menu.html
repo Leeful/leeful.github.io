@@ -9,7 +9,7 @@ if (UA!="9.00")alert("This Is For PS4 FW9.00 Only!");
 
 function GHBLScheck(){
  var req = new XMLHttpRequest();
- req.open("GET", "https://127.0.0.1:9090/status");
+ req.open("GET", "http://127.0.0.1:9090/status");
  req.send();
  req.onload = function(){sessionStorage.ghbls = "yes";GHBLS.innerHTML="GoldHEN BinLoader Server";}
  req.onerror = function(){sessionStorage.ghbls = "no";GHBLS.innerHTML="Webkit";}
@@ -241,13 +241,13 @@ function allset2(){
 
 function LoadFromGHBLS(PLfile){
  var req=new XMLHttpRequest();
- req.open("GET","https://127.0.0.1:9090/status");
+ req.open("GET","http://127.0.0.1:9090/status");
  req.send();
  req.onerror=function(){alert("Cannot Load Payload Because The BinLoader Server Is Not Running");return;};
  req.onload=function(){
   var responseJson=JSON.parse(req.responseText);
   if(responseJson.status=="ready"){
-   getPayload(PLfile,function(req){if((req.status===200||req.status===304)&&req.response){sendPayload("https://127.0.0.1:9090",req.response);}});
+   getPayload(PLfile,function(req){if((req.status===200||req.status===304)&&req.response){sendPayload("http://127.0.0.1:9090",req.response);}});
   }
   else{alert("Cannot Load Payload Because The BinLoader Server Is Busy");return;}
  };
