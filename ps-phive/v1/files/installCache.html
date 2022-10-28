@@ -1,0 +1,22 @@
+<html manifest="../webkit.cache">
+<head>
+<script>
+function DLProgress(e){
+	parent.ScrOverlay.style.display="block";
+	Percent=(Math.round(e.loaded / e.total * 100));
+	parent.cacheUPDtxt.innerHTML="Installing Offline Cache...";
+	parent.CacheBar.style.width=Percent + '%';
+}
+function DisplayCacheProgress(){
+	 parent.Loader.innerHTML='<object type="text/html" data="files/installCache2.html" style="width:265px; height:56px;"></object>';
+	}
+	window.applicationCache.addEventListener("progress",DLProgress,false);
+	window.applicationCache.oncached=function(e){DisplayCacheProgress();};
+	window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
+	window.applicationCache.onerror=function(e){parent.cacheUPDtxt.innerHTML="Error Installing Webkit Cache";
+};
+</script>
+</head>
+<body>
+</body>
+</html>
