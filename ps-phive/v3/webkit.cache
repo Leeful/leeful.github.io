@@ -1,0 +1,14 @@
+CACHE MANIFEST 
+# PS-Phive! For PS4 9.00 By Leeful
+# 24/11/2022-12:44:35.56 
+
+esp.html
+index.html
+files\900.js
+files\img\BG.jpg
+
+NETWORK:
+*
+
+SETTINGS:
+prefer-online:

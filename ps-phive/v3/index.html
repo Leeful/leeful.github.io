@@ -1,0 +1,136 @@
+<html>
+<head>
+<title>PS-Phive! v3 (FOR PS4 FW v9.00) By Leeful</title>
+<style>
+html{margin:0px;}
+body{background-color:#1849A5;background:url("files/img/BG.jpg");background-size:cover;background-repeat:no-repeat;color:#DDE5EA;font-family:sans-serif;font-size:22px;overflow:hidden;cursor:none;margin:0px;}
+.cacheUPDbg {transition:opacity 600ms;position:fixed;left:0;right:0;top:0;bottom:0;max-width:100%;max-height:100%;margin:auto;width:100%;height:100%;opacity:1;display:none;z-index:900;}
+.cacheUPDtext{position:absolute;left:0;top:318px;width:100%;margin:auto;height:400px;line-height:30px;align-items:left;font-family:sans-serif;font-size:28px;text-align:center;color:white;z-index:901;text-shadow:-2px 2px #274478;}
+#CacheProgress{position:fixed;left:230px;top:0;bottom:30px;max-width:100%;max-height:100%;margin:auto;width:538px;height:8px;background-color:transparent;border:3px solid #8C9CB6;border-right:none;border-radius:3px;}
+#CacheProgress2{position:fixed;left:765px;top:0;bottom:30px;max-width:100%;max-height:100%;margin:auto;width:538px;height:8px;background-color:transparent;border:3px solid #8C9CB6;border-left:none;border-radius:3px;}
+.CacheBar{width:0%;height:100%;background-color:white;}
+.Loader{background-color:transparent;transition:opacity 1000ms;opacity:0;}
+#PassFail0{position:fixed;right:10px;bottom:10px;font-size:18px;font-weight:bold;z-index:1;text-shadow:-1px 1px #646468;text-align:right;z-index:901;}
+#locStorg{position:fixed;left:10px;bottom:10px;font-size:18px;font-weight:bold;z-index:1;text-shadow:-1px 1px #646468;text-align:left;z-index:901;}
+</style>
+<script src="files/900.js"></script>
+<script>
+history.replaceState(null,null,'./index.html');
+stopwebkit=false;
+if (localStorage.kexStatus == "started") localStorage.kexUnsure = "unsure";
+var useEspIP = "not set";
+var waitForUSB = localStorage.waitForUSB;
+var espMode = "not used";
+
+</script>
+</head>
+<body onload="setTimeout(go,500)">
+<div id=ScrOverlay class=cacheUPDbg><pre id=cacheUPDtxt class=cacheUPDtext></pre><div id=CacheProgress><div id=CacheBar class=CacheBar></div></div><div id=CacheProgress2><div id=CacheBar2 class=CacheBar></div></div>
+<div id=PassFail0>Exploit Stats: Pass = <span id=passCounter0></span>&nbsp;&nbsp;:&nbsp;&nbsp;Fail = <span id=failCounter0></span></div>
+<div id=locStorg>ESP USB Wait Time = <span id=wait1></span><br>ESP IP Address = <span id=espip1></span><br>*Tip: Press X Before The Running Webkit Message Appears To Load ESP Config Settings.</div>
+</div>
+<div id=Loader class=Loader></div>
+<script>
+document.body.addEventListener('click',loadConfig,{once:true});
+
+var req = new XMLHttpRequest();
+req.open("POST", "http://10.1.1.1/getnetip", true);
+req.onload=function(){
+ if (req.responseText != "0.0.0.0")localStorage.espNetIP=req.responseText;
+ espMode = "1";
+ useEspIP = "10.1.1.1";
+ top.document.title="PS-Phive! v3 (FOR PS4 FW v9.00) By Leeful [ESP MODE]";
+}
+req.send(null);
+
+passCounter0.innerHTML=localStorage.passcount;
+failCounter0.innerHTML=localStorage.failcount;
+
+function checkGHBLS(){
+ document.body.removeEventListener('click',loadConfig,{once:true});
+ var req = new XMLHttpRequest();
+ req.open("GET", "http://127.0.0.1:9090/status");
+ req.send();
+ req.onload = function(){
+  Loader.innerHTML='<object id="mymenu" type="text/html" data="files/menu.html" onload="Loader.style.opacity=1" style="width:100%; height:100%; background-color:transparent;"></object>';
+ };
+ req.onerror = function(){setTimeout(runJB,600);};
+}
+
+function runJB(){
+ ScrOverlay.style.display="block";CacheProgress.style.display="none";CacheProgress2.style.display="none";cacheUPDtxt.innerHTML="Running Webkit Exploit, Please Wait ...";
+ setTimeout(webkitExploit,50);
+}
+
+function loadConfig(){
+// if(espMode == "1" || espMode == "2")
+  stopwebkit=true;
+  ScrOverlay.style.opacity="0"; setTimeout(function(){ScrOverlay.style.display="none";},600);
+  Loader.innerHTML='<object id="mymenu" type="text/html" data="esp.html" onload="Loader.style.opacity=1" style="width:100%; height:100%; background-color:transparent;"></object>';
+};
+
+function go(){
+ if (window.applicationCache.status=='0'){
+  PassFail0.style.display="none";
+  locStorg.style.display="none";
+  localStorage.GHver = "v2.3";
+  localStorage.autoGH = "OFF";
+  localStorage.passcount=0;
+  localStorage.failcount=0;
+  localStorage.tempPasscount=0;
+  localStorage.tempFailcount=0;
+  localStorage.waitForUSB=3000;
+  ScrOverlay.style.display="block";Loader.innerHTML='<object type="text/html" data="files/installCache.html" style="width:265px; height:56px;"></object>';  
+ }
+ else {
+  if (espMode == "not used" && !localStorage.espNetIP){
+   locStorg.style.display="none";
+   if(!stopwebkit)checkGHBLS();
+  }
+  else if (espMode == "not used" && localStorage.espNetIP){
+   espMode = "2";
+   useEspIP = localStorage.espNetIP;
+   top.document.title="PS-Phive! v3 (FOR PS4 FW v9.00) By Leeful [ESP MODE 2]";
+   espip1.innerHTML=useEspIP+" (On Home Wifi Network)";
+   wait1.innerHTML=waitForUSB+"ms";
+   if(!stopwebkit)checkGHBLS();   
+  }
+  else {
+   useEspIP = "10.1.1.1";
+   espip1.innerHTML=useEspIP+" (On ESP Network)";
+   wait1.innerHTML=waitForUSB+"ms";
+   if(!stopwebkit)checkGHBLS();  
+  }  
+ }
+}
+
+function JBpass(){
+ ScrOverlay.style.opacity="0"; setTimeout(function(){ScrOverlay.style.display="none";},600);
+ Loader.innerHTML='<object id="mymenu" type="text/html" data="files/menu.html" onload="Loader.style.opacity=1" style="width:100%; height:100%; background-color:transparent;"></object>';
+ setTimeout(function(){
+  //localStorage.passcount= localStorage.tempPasscount;
+  //localStorage.failcount= localStorage.tempFailcount;
+  //localStorage.kexStatus="good";
+ },9000);
+ if(localStorage.autoGH=="ON")
+  setTimeout(function(){mymenu.contentWindow.LoadPL();},1500);
+}
+
+function JBalreadyDone(){
+ ScrOverlay.style.opacity="0"; setTimeout(function(){ScrOverlay.style.display="none";},600);
+ Loader.innerHTML='<object id="mymenu" type="text/html" data="files/menu.html" onload="Loader.style.opacity=1" style="width:100%; height:100%; background-color:transparent;"></object>';
+}
+
+function enableUSB() {
+  var req = new XMLHttpRequest();
+  req.open("POST", "http://"+useEspIP+"/usbon", true);
+  req.send(null);
+}
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+///////////////////////////////////////////////////////
+////////////////////////////
+</script>
+</body>
+</html>
