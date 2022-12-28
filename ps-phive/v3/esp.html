@@ -14,7 +14,7 @@ body{background-color:#1849A5;background:url("files/img/BG.jpg");background-size
 var espMode = "not used";
 var useEspIP = "0";
  var xhr=new XMLHttpRequest();
- xhr.open("GET","http://10.1.1.1/esp.html");
+ xhr.open("GET","https://10.1.1.1/esp.html");
  xhr.onload=function(){
   espMode = "1";
   useEspIP = "10.1.1.1";
@@ -56,7 +56,7 @@ function saveValuesOnsubmit(message) {
 
 function saveValuesOnLoad(){
  var xhr=new XMLHttpRequest();
- xhr.open("GET","http://"+useEspIP+"/esp.html");
+ xhr.open("GET","https://"+useEspIP+"/esp.html");
  xhr.onload=function(){ 
   var div = document.createElement('div');
   div.innerHTML = xhr.responseText;
@@ -80,7 +80,7 @@ xhr.send();
 }; 
 
 function loadConfig(){
-Loader.innerHTML='<object id="mymenu" type="text/html" data="http://'+useEspIP+'/esp.html" onload="saveValuesOnLoad()" style="width:100%; height:100%; background-color:transparent;"></object>';
+Loader.innerHTML='<object id="mymenu" type="text/html" data="https://'+useEspIP+'/esp.html" onload="saveValuesOnLoad()" style="width:100%; height:100%; background-color:transparent;"></object>';
 setTimeout(function(){Loader.style.opacity="1";},500);
 }
 
