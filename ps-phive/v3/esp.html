@@ -14,7 +14,7 @@ body{background-color:#1849A5;background:url("files/img/BG.jpg");background-size
 var espMode = "not used";
 var useEspIP = "0";
  var xhr=new XMLHttpRequest();
- xhr.open("GET","https://10.1.1.1/esp.html");
+ xhr.open("GET","http://10.1.1.1/esp.html");
  xhr.onload=function(){
   espMode = "1";
   useEspIP = "10.1.1.1";
@@ -56,7 +56,7 @@ function saveValuesOnsubmit(message) {
 
 function saveValuesOnLoad(){
  var xhr=new XMLHttpRequest();
- xhr.open("GET","https://"+useEspIP+"/esp.html");
+ xhr.open("GET","http://"+useEspIP+"/esp.html");
  xhr.onload=function(){ 
   var div = document.createElement('div');
   div.innerHTML = xhr.responseText;
